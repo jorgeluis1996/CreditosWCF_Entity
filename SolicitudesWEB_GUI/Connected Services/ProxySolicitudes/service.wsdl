@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServicioSolicitud" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCF_SolicitudesCreditos" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioSolicitud_GetAllSolicitud_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetAllSolicitud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetAllSolicitudXAnalista_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSolicitudXAnalista" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetAllSolicitudXAnalista_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSolicitudXAnalistaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetAllSolicitudXCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSolicitudXCliente" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetAllSolicitudXCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSolicitudXClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetSolicitudXFechaXAnalista_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSolicitudXFechaXAnalista" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetSolicitudXFechaXAnalista_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSolicitudXFechaXAnalistaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetSolicitudXEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSolicitudXEstado" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetSolicitudXEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSolicitudXEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetSolicitudXEstadoxAnalista_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSolicitudXEstadoxAnalista" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetSolicitudXEstadoxAnalista_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSolicitudXEstadoxAnalistaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetPagoxSolicitud_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPagoxSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetPagoxSolicitud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPagoxSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetSolicitudXFechaXEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSolicitudXFechaXEstado" />
+  </wsdl:message>
+  <wsdl:message name="IServicioSolicitud_GetSolicitudXFechaXEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSolicitudXFechaXEstadoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioSolicitud">
+    <wsdl:operation name="GetAllSolicitud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioSolicitud/GetAllSolicitud" message="tns:IServicioSolicitud_GetAllSolicitud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioSolicitud/GetAllSolicitudResponse" message="tns:IServicioSolicitud_GetAllSolicitud_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSolicitudXAnalista">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioSolicitud/GetAllSolicitudXAnalista" message="tns:IServicioSolicitud_GetAllSolicitudXAnalista_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioSolicitud/GetAllSolicitudXAnalistaResponse" message="tns:IServicioSolicitud_GetAllSolicitudXAnalista_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSolicitudXCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioSolicitud/GetAllSolicitudXCliente" message="tns:IServicioSolicitud_GetAllSolicitudXCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioSolicitud/GetAllSolicitudXClienteResponse" message="tns:IServicioSolicitud_GetAllSolicitudXCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSolicitudXFechaXAnalista">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioSolicitud/GetSolicitudXFechaXAnalista" message="tns:IServicioSolicitud_GetSolicitudXFechaXAnalista_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioSolicitud/GetSolicitudXFechaXAnalistaResponse" message="tns:IServicioSolicitud_GetSolicitudXFechaXAnalista_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSolicitudXEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioSolicitud/GetSolicitudXEstado" message="tns:IServicioSolicitud_GetSolicitudXEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioSolicitud/GetSolicitudXEstadoResponse" message="tns:IServicioSolicitud_GetSolicitudXEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSolicitudXEstadoxAnalista">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioSolicitud/GetSolicitudXEstadoxAnalista" message="tns:IServicioSolicitud_GetSolicitudXEstadoxAnalista_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioSolicitud/GetSolicitudXEstadoxAnalistaResponse" message="tns:IServicioSolicitud_GetSolicitudXEstadoxAnalista_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPagoxSolicitud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioSolicitud/GetPagoxSolicitud" message="tns:IServicioSolicitud_GetPagoxSolicitud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioSolicitud/GetPagoxSolicitudResponse" message="tns:IServicioSolicitud_GetPagoxSolicitud_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSolicitudXFechaXEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioSolicitud/GetSolicitudXFechaXEstado" message="tns:IServicioSolicitud_GetSolicitudXFechaXEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioSolicitud/GetSolicitudXFechaXEstadoResponse" message="tns:IServicioSolicitud_GetSolicitudXFechaXEstado_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioSolicitud" type="tns:IServicioSolicitud">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllSolicitud">
+      <soap:operation soapAction="http://tempuri.org/IServicioSolicitud/GetAllSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSolicitudXAnalista">
+      <soap:operation soapAction="http://tempuri.org/IServicioSolicitud/GetAllSolicitudXAnalista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSolicitudXCliente">
+      <soap:operation soapAction="http://tempuri.org/IServicioSolicitud/GetAllSolicitudXCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSolicitudXFechaXAnalista">
+      <soap:operation soapAction="http://tempuri.org/IServicioSolicitud/GetSolicitudXFechaXAnalista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSolicitudXEstado">
+      <soap:operation soapAction="http://tempuri.org/IServicioSolicitud/GetSolicitudXEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSolicitudXEstadoxAnalista">
+      <soap:operation soapAction="http://tempuri.org/IServicioSolicitud/GetSolicitudXEstadoxAnalista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPagoxSolicitud">
+      <soap:operation soapAction="http://tempuri.org/IServicioSolicitud/GetPagoxSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSolicitudXFechaXEstado">
+      <soap:operation soapAction="http://tempuri.org/IServicioSolicitud/GetSolicitudXFechaXEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioSolicitud">
+    <wsdl:port name="BasicHttpBinding_IServicioSolicitud" binding="tns:BasicHttpBinding_IServicioSolicitud">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WCF_SolicitudesCreditos/ServicioSolicitud/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

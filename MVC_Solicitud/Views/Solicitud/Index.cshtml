@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <h3>LISTADO DE SOLICITUDES</h3>
+    <table class="table">
+        <tr>
+            <th>Codigo</th>
+            <th>Numero de Cuenta</th>
+            <th>Nombre Cliente</th>
+            <th>Producto</th>
+            <th>Estado</th>
+            <th>Estado de Desembolso</th>
+            <th>Cuotas</th>
+
+
+        </tr>
+        @foreach (var solicitud in ViewBag.GetAllSolicitud)
+        {
+    <tr>
+        <th>@solicitud.ld_solicitud </th>
+        <th>@solicitud.Num_cuenta </th>
+        <th>@solicitud.Nom_cli</th>
+        <th>@solicitud.PRODUCTO</th>
+        <th>@solicitud.Estado</th>
+        <th>@solicitud.Est_desembolso</th>
+        <th>@solicitud.Cuotas</th>
+
+    </tr>
+        }
+    </table>
+</body>
+</html>

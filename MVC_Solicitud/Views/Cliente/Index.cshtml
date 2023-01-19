@@ -1,0 +1,30 @@
+﻿
+<!DOCTYPE html>
+<html>
+<body>
+    <h3>LISTADO DE CLIENTES</h3>
+    <table class="table">
+        <tr>
+            <th>Codigo</th>
+            <th>DNI</th>
+            <th>Nombres</th>
+            <th>Email</th>
+            <th>Sexo</th>
+            <th>Edad</th>
+
+        </tr>
+        @foreach (var return_value in ViewBag.GetAllClientes)
+        {
+    <tr>
+
+        <th>@return_value.Id_cliente </th>
+        <th>@return_value.Dni_cli </th>
+        <th>@return_value.ApellNombre</th>
+        <th>@return_value.Email</th>
+        <th>@return_value.Sexo</th>
+        <th>@return_value.Edad</th>
+    </tr>
+        }
+    </table>
+</body>
+</html>

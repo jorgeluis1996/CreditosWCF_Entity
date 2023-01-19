@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WCF_SolicitudesCreditos" />
+  <xs:element name="GetAllSolicitud">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSolicitudResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCF_SolicitudesCreditos" minOccurs="0" name="GetAllSolicitudResult" nillable="true" type="q1:ArrayOfSolicitudBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSolicitudXAnalista">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id_analista" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSolicitudXAnalistaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCF_SolicitudesCreditos" minOccurs="0" name="GetAllSolicitudXAnalistaResult" nillable="true" type="q2:ArrayOfSolicitudBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSolicitudXCliente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id_cli" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSolicitudXClienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCF_SolicitudesCreditos" minOccurs="0" name="GetAllSolicitudXClienteResult" nillable="true" type="q3:ArrayOfSolicitudBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSolicitudXFechaXAnalista">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strCodigo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Fecini" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Fecfin" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSolicitudXFechaXAnalistaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCF_SolicitudesCreditos" minOccurs="0" name="GetSolicitudXFechaXAnalistaResult" nillable="true" type="q4:ArrayOfSolicitudBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSolicitudXEstado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Estado" type="xs:short" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSolicitudXEstadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCF_SolicitudesCreditos" minOccurs="0" name="GetSolicitudXEstadoResult" nillable="true" type="q5:ArrayOfSolicitudBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSolicitudXEstadoxAnalista">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Estado" type="xs:short" />
+        <xs:element minOccurs="0" name="codAnalista" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSolicitudXEstadoxAnalistaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCF_SolicitudesCreditos" minOccurs="0" name="GetSolicitudXEstadoxAnalistaResult" nillable="true" type="q6:ArrayOfSolicitudBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPagoxSolicitud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id_solicitud" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPagoxSolicitudResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCF_SolicitudesCreditos" minOccurs="0" name="GetPagoxSolicitudResult" nillable="true" type="q7:ArrayOfSolicitudBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSolicitudXFechaXEstado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Estado" type="xs:short" />
+        <xs:element minOccurs="0" name="Fecini" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Fecfin" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSolicitudXFechaXEstadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCF_SolicitudesCreditos" minOccurs="0" name="GetSolicitudXFechaXEstadoResult" nillable="true" type="q8:ArrayOfSolicitudBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

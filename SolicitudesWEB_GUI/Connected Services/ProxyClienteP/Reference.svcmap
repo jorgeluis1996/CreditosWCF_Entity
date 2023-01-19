@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4d88f142-ef94-4d37-916e-277253b6fd1c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://DESKTOP-CRJD420/WCF_SolicitudesCreditos/WCF_SolicitudesCreditos.ServicioCliente.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServicioCliente.wsdl" MetadataType="Wsdl" ID="84a67e41-ef35-4efc-b04f-4a6bf9630f41" SourceId="1" SourceUrl="http://DESKTOP-CRJD420/WCF_SolicitudesCreditos/WCF_SolicitudesCreditos.ServicioCliente.svc?wsdl" />
+    <MetadataFile FileName="WCF_SolicitudesCreditos.xsd" MetadataType="Schema" ID="bbd4ea1f-3334-42fa-8b93-53e5e70b9aa5" SourceId="1" SourceUrl="http://DESKTOP-CRJD420/WCF_SolicitudesCreditos/WCF_SolicitudesCreditos.ServicioCliente.svc?xsd=xsd0" />
+    <MetadataFile FileName="WCF_SolicitudesCreditos1.xsd" MetadataType="Schema" ID="8ddedcf7-d9d6-4554-9d35-b9e63809f4ca" SourceId="1" SourceUrl="http://DESKTOP-CRJD420/WCF_SolicitudesCreditos/WCF_SolicitudesCreditos.ServicioCliente.svc?xsd=xsd1" />
+    <MetadataFile FileName="WCF_SolicitudesCreditos2.xsd" MetadataType="Schema" ID="67a0b5e6-f6d2-448d-b8b7-d6657fd4d962" SourceId="1" SourceUrl="http://DESKTOP-CRJD420/WCF_SolicitudesCreditos/WCF_SolicitudesCreditos.ServicioCliente.svc?xsd=xsd2" />
+    <MetadataFile FileName="WCF_SolicitudesCreditos.disco" MetadataType="Disco" ID="514e8af7-40e9-4c3e-b94b-344eb7fefd6b" SourceId="1" SourceUrl="http://DESKTOP-CRJD420/WCF_SolicitudesCreditos/WCF_SolicitudesCreditos.ServicioCliente.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

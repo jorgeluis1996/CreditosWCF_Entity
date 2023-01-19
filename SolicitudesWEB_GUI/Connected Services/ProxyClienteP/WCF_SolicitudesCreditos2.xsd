@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCF_SolicitudesCreditos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCF_SolicitudesCreditos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ClienteBE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ape_cli" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApellNombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Departamento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Distrito" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Dni_cli" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edad" type="xs:short" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstCivil" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Est_cli" type="xs:short" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado_civil" type="xs:short" />
+      <xs:element minOccurs="0" name="Fec_nacimiento" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Fec_reg" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Fec_ult_mod" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id_cliente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id_ubigeo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nivel_Educacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nom_cli" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Provincia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ruc_cli" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sexo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Usu_registro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Usu_ult_mod" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClienteBE" nillable="true" type="tns:ClienteBE" />
+  <xs:complexType name="ArrayOfClienteBE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClienteBE" nillable="true" type="tns:ClienteBE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClienteBE" nillable="true" type="tns:ArrayOfClienteBE" />
+</xs:schema>

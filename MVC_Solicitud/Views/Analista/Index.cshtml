@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <h3>LISTADO DE GARANTIAS</h3>
+    <table class="table">
+        <tr>
+            <th>Codigo</th>
+            <th>Nombres de Analista</th>
+            <th>DNI</th>
+            <th>Email</th>
+        </tr>
+        @foreach (var analista in ViewBag.GetAllAnalista)
+        {
+            <tr>
+
+                <th>@analista.Id_analista </th>
+                <th>@analista.ApellNombre </th>
+                <th>@analista.DNI_analista</th>
+                <th>@analista.Email_analista</th>
+            </tr>
+        }
+    </table>
+</body>
+</html>

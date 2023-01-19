@@ -1,0 +1,239 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{07D4F694-9642-41A4-BAB9-8F68D47122D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WCF_SolicitudesCreditos</RootNamespace>
+    <AssemblyName>WCF_SolicitudesCreditos</AssemblyName>
+    <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <XsdCodeGenEnabled>True</XsdCodeGenEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IService1.cs" />
+    <Compile Include="IservicioAnalista.cs" />
+    <Compile Include="IServicioCliente.cs" />
+    <Compile Include="IServicioGarantia.cs" />
+    <Compile Include="IServicioSolicitud.cs" />
+    <Compile Include="IServicioUbigeo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service1.cs" />
+    <Compile Include="servicioAnalista.cs" />
+    <Compile Include="ServicioCliente.cs" />
+    <Compile Include="ServicioGarantia.cs" />
+    <Compile Include="ServicioSolicitud.cs" />
+    <Compile Include="ServicioUbigeo.cs" />
+    <Compile Include="SolicitudesCreditos.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SolicitudesCreditos.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitudesCreditos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitudesCreditos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SolicitudesCreditos.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Agencia.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Analista.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Cliente.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Credito_Hipotecario.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Credito_vehicular.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Fuente_Ingreso.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Garantia.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Pagos.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Prestamo_Facil.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Solicitud.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Tarjeta_Credito.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Ubigeo.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_Usuario.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarCliente_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarGarantia_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarCliente_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarGarantiaXcliente_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarGarantia_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarPagoSolicitud_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarSolicitudEstado_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarSolicitudXAna_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarSolicitudXcliente_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_RankingAnalistas_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_Ubigeo_Departamentos_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_Ubigeo_DistritosProvinciaDepartamento_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_Ubigeo_ProvinciasDepartamento_Result.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_Detalle_Agencia.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_Detalle_Cliente.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_Detalle_Garantia.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_Detalle_Solicitud.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_Ingresos_Clientes.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_PagosDetalles.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_SolicitudesXAgencia.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_VistaAnalista.cs">
+      <DependentUpon>SolicitudesCreditos.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="SolicitudesCreditos.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SolicitudesCreditos.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="SolicitudesCreditos.edmx.diagram">
+      <DependentUpon>SolicitudesCreditos.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SolicitudesCreditos.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SolicitudesCreditos.Context.cs</LastGenOutput>
+      <DependentUpon>SolicitudesCreditos.edmx</DependentUpon>
+    </Content>
+    <Content Include="SolicitudesCreditos.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SolicitudesCreditos.edmx</DependentUpon>
+      <LastGenOutput>SolicitudesCreditos.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio</VSToolsPath>
+    <WcfServiceModelTargetPath>$(VSToolsPath)\WCF</WcfServiceModelTargetPath>
+  </PropertyGroup>
+  <Import Project="$(WcfServiceModelTargetPath)\Microsoft.VisualStudio.ServiceModel.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
+        <WcfProjectProperties>
+          <AutoStart>True</AutoStart>
+        </WcfProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

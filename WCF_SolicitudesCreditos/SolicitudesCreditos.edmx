@@ -1,0 +1,2264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CreditosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tb_Agencia">
+          <Key>
+            <PropertyRef Name="Id_agencia" />
+          </Key>
+          <Property Name="Id_agencia" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Id_ubigeo" Type="nvarchar" MaxLength="6" />
+          <Property Name="Nom_agencia" Type="nvarchar" MaxLength="20" />
+          <Property Name="Agen_direccion" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Tb_Analista">
+          <Key>
+            <PropertyRef Name="Id_analista" />
+          </Key>
+          <Property Name="Id_analista" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="Nom_analista" Type="nvarchar" MaxLength="25" />
+          <Property Name="Ape_analista" Type="nvarchar" MaxLength="25" />
+          <Property Name="Id_agencia" Type="nchar" MaxLength="6" />
+          <Property Name="Fec_ingreso" Type="datetime" Nullable="false" />
+          <Property Name="DNI_analista" Type="nvarchar" MaxLength="8" />
+          <Property Name="Email_analista" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tb_Cliente">
+          <Key>
+            <PropertyRef Name="Id_cli" />
+          </Key>
+          <Property Name="Id_cli" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="Nom_cli" Type="nvarchar" MaxLength="25" />
+          <Property Name="Ape_cli" Type="nvarchar" MaxLength="25" />
+          <Property Name="Dni_cli" Type="varchar" MaxLength="8" />
+          <Property Name="Ruc_cli" Type="varchar" MaxLength="11" />
+          <Property Name="Sexo" Type="char" MaxLength="1" />
+          <Property Name="Fec_nacimiento" Type="date" />
+          <Property Name="Nivel_educacion" Type="nvarchar" MaxLength="20" />
+          <Property Name="Estado_civil" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_ubigeo" Type="nvarchar" MaxLength="6" />
+          <Property Name="Est_cli" Type="int" />
+          <Property Name="Fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="Usu_registro" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fec_ult_mod" Type="datetime" />
+          <Property Name="Usu_ult_mod" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tb_Credito_Hipotecario">
+          <Key>
+            <PropertyRef Name="Id_Det_Credito_Hipotecario" />
+          </Key>
+          <Property Name="Id_Det_Credito_Hipotecario" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Id_solicitud" Type="nchar" MaxLength="6" />
+          <Property Name="Tipo_hipotecario" Type="nvarchar" MaxLength="50" />
+          <Property Name="Valor_inmueble" Type="money" />
+          <Property Name="Cuota_inicial" Type="money" />
+          <Property Name="Plazo" Type="int" />
+          <Property Name="Destino_Compra" Type="nvarchar" MaxLength="30" />
+          <Property Name="Est_credito_hipotecario" Type="int" />
+          <Property Name="Fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="Usu_registro" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fec_ult_mod" Type="datetime" />
+          <Property Name="Usu_ult_mod" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tb_Credito_vehicular">
+          <Key>
+            <PropertyRef Name="Id_Det_Credito_vehicular" />
+          </Key>
+          <Property Name="Id_Det_Credito_vehicular" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Id_solicitud" Type="nchar" MaxLength="6" />
+          <Property Name="Cuota_inicial" Type="money" />
+          <Property Name="Plazo" Type="int" />
+          <Property Name="Seguro" Type="nchar" MaxLength="1" />
+          <Property Name="Nom_concesionario" Type="nvarchar" MaxLength="30" />
+          <Property Name="Nom_Vendedor" Type="nvarchar" MaxLength="60" />
+          <Property Name="Dni_Vendedor" Type="nvarchar" MaxLength="8" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="20" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Año" Type="date" />
+          <Property Name="Est_credito_vehicular" Type="int" />
+          <Property Name="Fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="Usu_registro" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fec_ult_mod" Type="datetime" />
+          <Property Name="Usu_ult_mod" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tb_Fuente_Ingreso">
+          <Key>
+            <PropertyRef Name="Id_ingreso" />
+          </Key>
+          <Property Name="Id_ingreso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_cli" Type="char" MaxLength="7" />
+          <Property Name="Tipo_ingreso" Type="int" />
+          <Property Name="Monto_ingreso" Type="money" />
+          <Property Name="Fec_inicio" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Garantia">
+          <Key>
+            <PropertyRef Name="Id_garantia" />
+          </Key>
+          <Property Name="Id_garantia" Type="int" Nullable="false" />
+          <Property Name="Tip_garantia" Type="nvarchar" MaxLength="30" />
+          <Property Name="Des_garantia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Valor_garantia" Type="money" />
+          <Property Name="Id_cli" Type="char" MaxLength="7" />
+          <Property Name="Est_garantia" Type="int" />
+          <Property Name="Fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="Usu_registro" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fec_ult_mod" Type="datetime" />
+          <Property Name="Usu_ult_mod" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tb_Pagos">
+          <Key>
+            <PropertyRef Name="Boleta" />
+          </Key>
+          <Property Name="Boleta" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Id_solicitud" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Monto_cancelado" Type="money" />
+          <Property Name="Cuota_numero" Type="int" />
+          <Property Name="Fec_pago" Type="datetime" />
+          <Property Name="Fec_cancelacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tb_Prestamo_Facil">
+          <Key>
+            <PropertyRef Name="Id_Det_Prestamo_Facil" />
+          </Key>
+          <Property Name="Id_Det_Prestamo_Facil" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Id_solicitud" Type="nchar" MaxLength="6" />
+          <Property Name="Tipo_prestamo" Type="nvarchar" MaxLength="30" />
+          <Property Name="Tipo_desembolso" Type="nvarchar" MaxLength="20" />
+          <Property Name="Plazo" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Solicitud">
+          <Key>
+            <PropertyRef Name="Id_solicitud" />
+          </Key>
+          <Property Name="Id_solicitud" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Id_cli" Type="char" MaxLength="7" />
+          <Property Name="Id_analista" Type="char" MaxLength="7" />
+          <Property Name="Tipo_producto" Type="int" />
+          <Property Name="Fec_solicitud" Type="datetime" Nullable="false" />
+          <Property Name="Monto_solici" Type="money" />
+          <Property Name="Num_cuenta" Type="nchar" MaxLength="14" />
+          <Property Name="Est_solicitud" Type="int" />
+          <Property Name="Fec_aprobacion" Type="datetime" />
+          <Property Name="Fec_rechazo" Type="datetime" />
+          <Property Name="Motivo_rechazo" Type="varchar" MaxLength="1000" />
+          <Property Name="Est_desembolso" Type="int" />
+          <Property Name="Fec_desembolso" Type="datetime" />
+          <Property Name="Fec_pago" Type="datetime" />
+          <Property Name="Fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="Usu_registro" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fec_ult_mod" Type="datetime" />
+          <Property Name="Usu_ult_mod" Type="nvarchar" MaxLength="20" />
+          <Property Name="Cuotas" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Tarjeta_Credito">
+          <Key>
+            <PropertyRef Name="Id_Det_Tarjeta_Credito" />
+          </Key>
+          <Property Name="Id_Det_Tarjeta_Credito" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Id_solicitud" Type="nchar" MaxLength="6" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="30" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Moneda" Type="nvarchar" MaxLength="10" />
+          <Property Name="Dispone_efectivo" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Tb_Ubigeo">
+          <Key>
+            <PropertyRef Name="Id_ubigeo" />
+          </Key>
+          <Property Name="Id_ubigeo" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="IdDepa" Type="nchar" MaxLength="2" />
+          <Property Name="IdProv" Type="nchar" MaxLength="2" />
+          <Property Name="IdDist" Type="nchar" MaxLength="2" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="50" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Distrito" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_Usuario">
+          <Key>
+            <PropertyRef Name="Login_Usuario" />
+          </Key>
+          <Property Name="Login_Usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pass_Usuario" Type="varbinary" MaxLength="8000" Nullable="false" />
+          <Property Name="Niv_Usuario" Type="int" />
+          <Property Name="Est_Usuario" Type="int" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Creditos.dbo.vw_Detalle_Agencia' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Detalle_Agencia">
+          <Key>
+            <PropertyRef Name="Id_agencia" />
+          </Key>
+          <Property Name="Id_agencia" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Id_ubigeo" Type="nvarchar" MaxLength="6" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="50" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Distrito" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nom_agencia" Type="nvarchar" MaxLength="20" />
+          <Property Name="Agen_direccion" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Creditos.dbo.vw_Detalle_Cliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Detalle_Cliente">
+          <Key>
+            <PropertyRef Name="Id_cli" />
+          </Key>
+          <Property Name="Id_cli" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="Nom_cli" Type="nvarchar" MaxLength="25" />
+          <Property Name="Ape_cli" Type="nvarchar" MaxLength="25" />
+          <Property Name="Dni_cli" Type="varchar" MaxLength="8" />
+          <Property Name="Ruc_cli" Type="varchar" MaxLength="11" />
+          <Property Name="Sexo" Type="char" MaxLength="1" />
+          <Property Name="Fec_nacimiento" Type="date" />
+          <Property Name="Edad" Type="int" />
+          <Property Name="Nivel_educacion" Type="nvarchar" MaxLength="20" />
+          <Property Name="EstadoCivil" Type="varchar" MaxLength="12" />
+          <Property Name="Estado_civil" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_ubigeo" Type="nvarchar" MaxLength="6" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="50" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Distrito" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estado cliente" Type="varchar" MaxLength="9" />
+          <Property Name="Est_cli" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Creditos.dbo.vw_Detalle_Garantia' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Detalle_Garantia">
+          <Key>
+            <PropertyRef Name="Id_garantia" />
+          </Key>
+          <Property Name="Id_garantia" Type="int" Nullable="false" />
+          <Property Name="Nom_cli" Type="nvarchar" MaxLength="25" />
+          <Property Name="Ape_cli" Type="nvarchar" MaxLength="25" />
+          <Property Name="Id_cli" Type="char" MaxLength="7" />
+          <Property Name="Tip_garantia" Type="nvarchar" MaxLength="30" />
+          <Property Name="Des_garantia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Valor_garantia" Type="money" />
+          <Property Name="Estado garantia" Type="varchar" MaxLength="9" />
+          <Property Name="Est_garantia" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Creditos.dbo.vw_Detalle_Solicitud' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Detalle_Solicitud">
+          <Key>
+            <PropertyRef Name="Id_solicitud" />
+            <PropertyRef Name="Fec_solicitud" />
+          </Key>
+          <Property Name="Id_solicitud" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Id_cli" Type="char" MaxLength="7" />
+          <Property Name="Nombre cliente" Type="nvarchar" MaxLength="51" />
+          <Property Name="Nom_cli" Type="nvarchar" MaxLength="25" />
+          <Property Name="Ape_cli" Type="nvarchar" MaxLength="25" />
+          <Property Name="Id_analista" Type="char" MaxLength="7" />
+          <Property Name="Nombre analista" Type="nvarchar" MaxLength="51" />
+          <Property Name="PRODUCTO" Type="varchar" MaxLength="19" />
+          <Property Name="Tipo_producto" Type="int" />
+          <Property Name="Fec_solicitud" Type="datetime" Nullable="false" />
+          <Property Name="Monto_solici" Type="money" />
+          <Property Name="Num_cuenta" Type="nchar" MaxLength="14" />
+          <Property Name="Estado" Type="varchar" MaxLength="10" />
+          <Property Name="Est_solicitud" Type="int" />
+          <Property Name="Fec_aprobacion" Type="datetime" />
+          <Property Name="Fec_rechazo" Type="datetime" />
+          <Property Name="Motivo_rechazo" Type="varchar" MaxLength="1000" />
+          <Property Name="Estado desembolso" Type="varchar" MaxLength="13" />
+          <Property Name="Cuotas" Type="int" />
+          <Property Name="Est_desembolso" Type="int" />
+          <Property Name="Fec_desembolso" Type="datetime" />
+          <Property Name="Fec_pago" Type="datetime" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Creditos.dbo.vw_Ingresos_Clientes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Ingresos_Clientes">
+          <Key>
+            <PropertyRef Name="ID del Cliente" />
+            <PropertyRef Name="Inicio percepción de ingreso" />
+          </Key>
+          <Property Name="ID del Cliente" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="Nombre del cliente" Type="nvarchar" MaxLength="51" />
+          <Property Name="Tipo de ingresos" Type="int" />
+          <Property Name="Ingreso descripción" Type="varchar" MaxLength="25" />
+          <Property Name="Ingresos" Type="money" />
+          <Property Name="Inicio percepción de ingreso" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Creditos.dbo.vw_PagosDetalles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_PagosDetalles">
+          <Key>
+            <PropertyRef Name="Boleta" />
+            <PropertyRef Name="Id_solicitud" />
+          </Key>
+          <Property Name="Boleta" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Id_solicitud" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Nombre_Completo" Type="nvarchar" MaxLength="51" />
+          <Property Name="Id_cli" Type="char" MaxLength="7" />
+          <Property Name="Monto_cancelado" Type="money" />
+          <Property Name="Cuota_numero" Type="int" />
+          <Property Name="Cuotas" Type="int" />
+          <Property Name="Fec_pago" Type="datetime" />
+          <Property Name="Fec_cancelacion" Type="datetime" />
+          <Property Name="RetrasoPago" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Creditos.dbo.vw_SolicitudesXAgencia' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_SolicitudesXAgencia">
+          <Key>
+            <PropertyRef Name="Id_agencia" />
+            <PropertyRef Name="Id_solicitud" />
+            <PropertyRef Name="Fec_solicitud" />
+          </Key>
+          <Property Name="Id_agencia" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Nom_analista" Type="nvarchar" MaxLength="25" />
+          <Property Name="Id_solicitud" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Fec_solicitud" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="10" />
+          <Property Name="Id_ubigeo" Type="nvarchar" MaxLength="6" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="50" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Distrito" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nom_agencia" Type="nvarchar" MaxLength="20" />
+          <Property Name="Agen_direccion" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Creditos.dbo.vw_VistaAnalista' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_VistaAnalista">
+          <Key>
+            <PropertyRef Name="Id_analista" />
+            <PropertyRef Name="Fec_ingreso" />
+          </Key>
+          <Property Name="Id_analista" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="Nom_analista" Type="nvarchar" MaxLength="25" />
+          <Property Name="Ape_analista" Type="nvarchar" MaxLength="25" />
+          <Property Name="Id_agencia" Type="nchar" MaxLength="6" />
+          <Property Name="Nom_agencia" Type="nvarchar" MaxLength="20" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="50" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Distrito" Type="nvarchar" MaxLength="50" />
+          <Property Name="Agen_direccion" Type="nvarchar" MaxLength="150" />
+          <Property Name="Fec_ingreso" Type="datetime" Nullable="false" />
+          <Property Name="DNI_analista" Type="nvarchar" MaxLength="8" />
+          <Property Name="Email_analista" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK__Tb_Agenci__Id_ub__4E88ABD4">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Agencia" Type="Self.Tb_Agencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Agencia">
+              <PropertyRef Name="Id_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Analis__Id_ag__4D94879B">
+          <End Role="Tb_Agencia" Type="Self.Tb_Agencia" Multiplicity="0..1" />
+          <End Role="Tb_Analista" Type="Self.Tb_Analista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Agencia">
+              <PropertyRef Name="Id_agencia" />
+            </Principal>
+            <Dependent Role="Tb_Analista">
+              <PropertyRef Name="Id_agencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Client__Id_ub__4AB81AF0">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Cliente">
+              <PropertyRef Name="Id_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Credit__Id_so__534D60F1">
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="0..1" />
+          <End Role="Tb_Credito_vehicular" Type="Self.Tb_Credito_vehicular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Solicitud">
+              <PropertyRef Name="Id_solicitud" />
+            </Principal>
+            <Dependent Role="Tb_Credito_vehicular">
+              <PropertyRef Name="Id_solicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Credit__Id_so__5441852A">
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="0..1" />
+          <End Role="Tb_Credito_Hipotecario" Type="Self.Tb_Credito_Hipotecario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Solicitud">
+              <PropertyRef Name="Id_solicitud" />
+            </Principal>
+            <Dependent Role="Tb_Credito_Hipotecario">
+              <PropertyRef Name="Id_solicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Fuente__Id_cl__4BAC3F29">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
+          <End Role="Tb_Fuente_Ingreso" Type="Self.Tb_Fuente_Ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="Id_cli" />
+            </Principal>
+            <Dependent Role="Tb_Fuente_Ingreso">
+              <PropertyRef Name="Id_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Garant__Id_cl__4CA06362">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
+          <End Role="Tb_Garantia" Type="Self.Tb_Garantia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="Id_cli" />
+            </Principal>
+            <Dependent Role="Tb_Garantia">
+              <PropertyRef Name="Id_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Pagos__Id_sol__3493CFA7">
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="1" />
+          <End Role="Tb_Pagos" Type="Self.Tb_Pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Solicitud">
+              <PropertyRef Name="Id_solicitud" />
+            </Principal>
+            <Dependent Role="Tb_Pagos">
+              <PropertyRef Name="Id_solicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Presta__Id_so__52593CB8">
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="0..1" />
+          <End Role="Tb_Prestamo_Facil" Type="Self.Tb_Prestamo_Facil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Solicitud">
+              <PropertyRef Name="Id_solicitud" />
+            </Principal>
+            <Dependent Role="Tb_Prestamo_Facil">
+              <PropertyRef Name="Id_solicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Solici__Id_an__5070F446">
+          <End Role="Tb_Analista" Type="Self.Tb_Analista" Multiplicity="0..1" />
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Analista">
+              <PropertyRef Name="Id_analista" />
+            </Principal>
+            <Dependent Role="Tb_Solicitud">
+              <PropertyRef Name="Id_analista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Solici__Id_cl__4F7CD00D">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="Id_cli" />
+            </Principal>
+            <Dependent Role="Tb_Solicitud">
+              <PropertyRef Name="Id_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Tarjet__Id_so__5165187F">
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="0..1" />
+          <End Role="Tb_Tarjeta_Credito" Type="Self.Tb_Tarjeta_Credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Solicitud">
+              <PropertyRef Name="Id_solicitud" />
+            </Principal>
+            <Dependent Role="Tb_Tarjeta_Credito">
+              <PropertyRef Name="Id_solicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod" Type="char" Mode="In" />
+          <Parameter Name="vnomb" Type="varchar" Mode="In" />
+          <Parameter Name="vApelli" Type="varchar" Mode="In" />
+          <Parameter Name="vdniCli" Type="varchar" Mode="In" />
+          <Parameter Name="vruc" Type="char" Mode="In" />
+          <Parameter Name="vsexo" Type="char" Mode="In" />
+          <Parameter Name="vfecNac" Type="date" Mode="In" />
+          <Parameter Name="vEduc" Type="varchar" Mode="In" />
+          <Parameter Name="vEst_Civil" Type="int" Mode="In" />
+          <Parameter Name="vEmail" Type="varchar" Mode="In" />
+          <Parameter Name="vIdubi" Type="char" Mode="In" />
+          <Parameter Name="vEst_Cli" Type="int" Mode="In" />
+          <Parameter Name="vUsu_Ult_Mod" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarGarantia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_garantia" Type="int" Mode="In" />
+          <Parameter Name="tip_garantia" Type="nvarchar" Mode="In" />
+          <Parameter Name="des_garantia" Type="nvarchar" Mode="In" />
+          <Parameter Name="valor_garantia" Type="money" Mode="In" />
+          <Parameter Name="id_cli" Type="char" Mode="In" />
+          <Parameter Name="est_garania" Type="int" Mode="In" />
+          <Parameter Name="usu_ult_mod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcos" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarGarantia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_garantia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarGarantia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_garantia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vnomb" Type="varchar" Mode="In" />
+          <Parameter Name="vApelli" Type="varchar" Mode="In" />
+          <Parameter Name="vdniCli" Type="varchar" Mode="In" />
+          <Parameter Name="vruc" Type="char" Mode="In" />
+          <Parameter Name="vsexo" Type="char" Mode="In" />
+          <Parameter Name="vfecNac" Type="date" Mode="In" />
+          <Parameter Name="vEduc" Type="varchar" Mode="In" />
+          <Parameter Name="vEst_Civil" Type="int" Mode="In" />
+          <Parameter Name="vEmail" Type="varchar" Mode="In" />
+          <Parameter Name="vIdubi" Type="char" Mode="In" />
+          <Parameter Name="vEst_Cli" Type="int" Mode="In" />
+          <Parameter Name="vUsu_Registro" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarGarantia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Tip_garantia" Type="nvarchar" Mode="In" />
+          <Parameter Name="Des_garantia" Type="nvarchar" Mode="In" />
+          <Parameter Name="Valor_garantia" Type="money" Mode="In" />
+          <Parameter Name="Id_cli" Type="char" Mode="In" />
+          <Parameter Name="Est_garantia" Type="int" Mode="In" />
+          <Parameter Name="Usu_registro" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarGarantia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarGarantiaXcliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_cliente" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarPagoSolicitud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_solicitud" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarSolicitudEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vEstado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarSolicitudXAna" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_analista" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarSolicitudXcliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_cliente" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_RankingAnalistas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vTop" Type="int" Mode="In" />
+          <Parameter Name="vEst_soli" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_Ubigeo_Departamentos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_Ubigeo_DistritosProvinciaDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDepartamento" Type="char" Mode="In" />
+          <Parameter Name="IdProvincia" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_Ubigeo_ProvinciasDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDepartamento" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="CreditosModelStoreContainer">
+          <EntitySet Name="Tb_Agencia" EntityType="Self.Tb_Agencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Analista" EntityType="Self.Tb_Analista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Credito_Hipotecario" EntityType="Self.Tb_Credito_Hipotecario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Credito_vehicular" EntityType="Self.Tb_Credito_vehicular" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Fuente_Ingreso" EntityType="Self.Tb_Fuente_Ingreso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Garantia" EntityType="Self.Tb_Garantia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Pagos" EntityType="Self.Tb_Pagos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Prestamo_Facil" EntityType="Self.Tb_Prestamo_Facil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Solicitud" EntityType="Self.Tb_Solicitud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Tarjeta_Credito" EntityType="Self.Tb_Tarjeta_Credito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Ubigeo" EntityType="Self.Tb_Ubigeo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Usuario" EntityType="Self.tb_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_Detalle_Agencia" EntityType="Self.vw_Detalle_Agencia" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Detalle_Agencia].[Id_agencia] AS [Id_agencia], 
+    [vw_Detalle_Agencia].[Id_ubigeo] AS [Id_ubigeo], 
+    [vw_Detalle_Agencia].[Departamento] AS [Departamento], 
+    [vw_Detalle_Agencia].[Provincia] AS [Provincia], 
+    [vw_Detalle_Agencia].[Distrito] AS [Distrito], 
+    [vw_Detalle_Agencia].[Nom_agencia] AS [Nom_agencia], 
+    [vw_Detalle_Agencia].[Agen_direccion] AS [Agen_direccion]
+    FROM [dbo].[vw_Detalle_Agencia] AS [vw_Detalle_Agencia]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Detalle_Cliente" EntityType="Self.vw_Detalle_Cliente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Detalle_Cliente].[Id_cli] AS [Id_cli], 
+    [vw_Detalle_Cliente].[Nom_cli] AS [Nom_cli], 
+    [vw_Detalle_Cliente].[Ape_cli] AS [Ape_cli], 
+    [vw_Detalle_Cliente].[Dni_cli] AS [Dni_cli], 
+    [vw_Detalle_Cliente].[Ruc_cli] AS [Ruc_cli], 
+    [vw_Detalle_Cliente].[Sexo] AS [Sexo], 
+    [vw_Detalle_Cliente].[Fec_nacimiento] AS [Fec_nacimiento], 
+    [vw_Detalle_Cliente].[Edad] AS [Edad], 
+    [vw_Detalle_Cliente].[Nivel_educacion] AS [Nivel_educacion], 
+    [vw_Detalle_Cliente].[EstadoCivil] AS [EstadoCivil], 
+    [vw_Detalle_Cliente].[Estado_civil] AS [Estado_civil], 
+    [vw_Detalle_Cliente].[Email] AS [Email], 
+    [vw_Detalle_Cliente].[Id_ubigeo] AS [Id_ubigeo], 
+    [vw_Detalle_Cliente].[Departamento] AS [Departamento], 
+    [vw_Detalle_Cliente].[Provincia] AS [Provincia], 
+    [vw_Detalle_Cliente].[Distrito] AS [Distrito], 
+    [vw_Detalle_Cliente].[Estado cliente] AS [Estado cliente], 
+    [vw_Detalle_Cliente].[Est_cli] AS [Est_cli]
+    FROM [dbo].[vw_Detalle_Cliente] AS [vw_Detalle_Cliente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Detalle_Garantia" EntityType="Self.vw_Detalle_Garantia" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Detalle_Garantia].[Id_garantia] AS [Id_garantia], 
+    [vw_Detalle_Garantia].[Nom_cli] AS [Nom_cli], 
+    [vw_Detalle_Garantia].[Ape_cli] AS [Ape_cli], 
+    [vw_Detalle_Garantia].[Id_cli] AS [Id_cli], 
+    [vw_Detalle_Garantia].[Tip_garantia] AS [Tip_garantia], 
+    [vw_Detalle_Garantia].[Des_garantia] AS [Des_garantia], 
+    [vw_Detalle_Garantia].[Valor_garantia] AS [Valor_garantia], 
+    [vw_Detalle_Garantia].[Estado garantia] AS [Estado garantia], 
+    [vw_Detalle_Garantia].[Est_garantia] AS [Est_garantia]
+    FROM [dbo].[vw_Detalle_Garantia] AS [vw_Detalle_Garantia]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Detalle_Solicitud" EntityType="Self.vw_Detalle_Solicitud" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Detalle_Solicitud].[Id_solicitud] AS [Id_solicitud], 
+    [vw_Detalle_Solicitud].[Id_cli] AS [Id_cli], 
+    [vw_Detalle_Solicitud].[Nombre cliente] AS [Nombre cliente], 
+    [vw_Detalle_Solicitud].[Nom_cli] AS [Nom_cli], 
+    [vw_Detalle_Solicitud].[Ape_cli] AS [Ape_cli], 
+    [vw_Detalle_Solicitud].[Id_analista] AS [Id_analista], 
+    [vw_Detalle_Solicitud].[Nombre analista] AS [Nombre analista], 
+    [vw_Detalle_Solicitud].[PRODUCTO] AS [PRODUCTO], 
+    [vw_Detalle_Solicitud].[Tipo_producto] AS [Tipo_producto], 
+    [vw_Detalle_Solicitud].[Fec_solicitud] AS [Fec_solicitud], 
+    [vw_Detalle_Solicitud].[Monto_solici] AS [Monto_solici], 
+    [vw_Detalle_Solicitud].[Num_cuenta] AS [Num_cuenta], 
+    [vw_Detalle_Solicitud].[Estado] AS [Estado], 
+    [vw_Detalle_Solicitud].[Est_solicitud] AS [Est_solicitud], 
+    [vw_Detalle_Solicitud].[Fec_aprobacion] AS [Fec_aprobacion], 
+    [vw_Detalle_Solicitud].[Fec_rechazo] AS [Fec_rechazo], 
+    [vw_Detalle_Solicitud].[Motivo_rechazo] AS [Motivo_rechazo], 
+    [vw_Detalle_Solicitud].[Estado desembolso] AS [Estado desembolso], 
+    [vw_Detalle_Solicitud].[Cuotas] AS [Cuotas], 
+    [vw_Detalle_Solicitud].[Est_desembolso] AS [Est_desembolso], 
+    [vw_Detalle_Solicitud].[Fec_desembolso] AS [Fec_desembolso], 
+    [vw_Detalle_Solicitud].[Fec_pago] AS [Fec_pago]
+    FROM [dbo].[vw_Detalle_Solicitud] AS [vw_Detalle_Solicitud]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Ingresos_Clientes" EntityType="Self.vw_Ingresos_Clientes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Ingresos_Clientes].[ID del Cliente] AS [ID del Cliente], 
+    [vw_Ingresos_Clientes].[Nombre del cliente] AS [Nombre del cliente], 
+    [vw_Ingresos_Clientes].[Tipo de ingresos] AS [Tipo de ingresos], 
+    [vw_Ingresos_Clientes].[Ingreso descripción] AS [Ingreso descripción], 
+    [vw_Ingresos_Clientes].[Ingresos] AS [Ingresos], 
+    [vw_Ingresos_Clientes].[Inicio percepción de ingreso] AS [Inicio percepción de ingreso]
+    FROM [dbo].[vw_Ingresos_Clientes] AS [vw_Ingresos_Clientes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_PagosDetalles" EntityType="Self.vw_PagosDetalles" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_PagosDetalles].[Boleta] AS [Boleta], 
+    [vw_PagosDetalles].[Id_solicitud] AS [Id_solicitud], 
+    [vw_PagosDetalles].[Nombre_Completo] AS [Nombre_Completo], 
+    [vw_PagosDetalles].[Id_cli] AS [Id_cli], 
+    [vw_PagosDetalles].[Monto_cancelado] AS [Monto_cancelado], 
+    [vw_PagosDetalles].[Cuota_numero] AS [Cuota_numero], 
+    [vw_PagosDetalles].[Cuotas] AS [Cuotas], 
+    [vw_PagosDetalles].[Fec_pago] AS [Fec_pago], 
+    [vw_PagosDetalles].[Fec_cancelacion] AS [Fec_cancelacion], 
+    [vw_PagosDetalles].[RetrasoPago] AS [RetrasoPago]
+    FROM [dbo].[vw_PagosDetalles] AS [vw_PagosDetalles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_SolicitudesXAgencia" EntityType="Self.vw_SolicitudesXAgencia" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_SolicitudesXAgencia].[Id_agencia] AS [Id_agencia], 
+    [vw_SolicitudesXAgencia].[Nom_analista] AS [Nom_analista], 
+    [vw_SolicitudesXAgencia].[Id_solicitud] AS [Id_solicitud], 
+    [vw_SolicitudesXAgencia].[Fec_solicitud] AS [Fec_solicitud], 
+    [vw_SolicitudesXAgencia].[Estado] AS [Estado], 
+    [vw_SolicitudesXAgencia].[Id_ubigeo] AS [Id_ubigeo], 
+    [vw_SolicitudesXAgencia].[Departamento] AS [Departamento], 
+    [vw_SolicitudesXAgencia].[Provincia] AS [Provincia], 
+    [vw_SolicitudesXAgencia].[Distrito] AS [Distrito], 
+    [vw_SolicitudesXAgencia].[Nom_agencia] AS [Nom_agencia], 
+    [vw_SolicitudesXAgencia].[Agen_direccion] AS [Agen_direccion]
+    FROM [dbo].[vw_SolicitudesXAgencia] AS [vw_SolicitudesXAgencia]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_VistaAnalista" EntityType="Self.vw_VistaAnalista" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_VistaAnalista].[Id_analista] AS [Id_analista], 
+    [vw_VistaAnalista].[Nom_analista] AS [Nom_analista], 
+    [vw_VistaAnalista].[Ape_analista] AS [Ape_analista], 
+    [vw_VistaAnalista].[Id_agencia] AS [Id_agencia], 
+    [vw_VistaAnalista].[Nom_agencia] AS [Nom_agencia], 
+    [vw_VistaAnalista].[Departamento] AS [Departamento], 
+    [vw_VistaAnalista].[Provincia] AS [Provincia], 
+    [vw_VistaAnalista].[Distrito] AS [Distrito], 
+    [vw_VistaAnalista].[Agen_direccion] AS [Agen_direccion], 
+    [vw_VistaAnalista].[Fec_ingreso] AS [Fec_ingreso], 
+    [vw_VistaAnalista].[DNI_analista] AS [DNI_analista], 
+    [vw_VistaAnalista].[Email_analista] AS [Email_analista]
+    FROM [dbo].[vw_VistaAnalista] AS [vw_VistaAnalista]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Tb_Agenci__Id_ub__4E88ABD4" Association="Self.FK__Tb_Agenci__Id_ub__4E88ABD4">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Agencia" EntitySet="Tb_Agencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Analis__Id_ag__4D94879B" Association="Self.FK__Tb_Analis__Id_ag__4D94879B">
+            <End Role="Tb_Agencia" EntitySet="Tb_Agencia" />
+            <End Role="Tb_Analista" EntitySet="Tb_Analista" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Client__Id_ub__4AB81AF0" Association="Self.FK__Tb_Client__Id_ub__4AB81AF0">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Credit__Id_so__534D60F1" Association="Self.FK__Tb_Credit__Id_so__534D60F1">
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+            <End Role="Tb_Credito_vehicular" EntitySet="Tb_Credito_vehicular" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Credit__Id_so__5441852A" Association="Self.FK__Tb_Credit__Id_so__5441852A">
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+            <End Role="Tb_Credito_Hipotecario" EntitySet="Tb_Credito_Hipotecario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Fuente__Id_cl__4BAC3F29" Association="Self.FK__Tb_Fuente__Id_cl__4BAC3F29">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Fuente_Ingreso" EntitySet="Tb_Fuente_Ingreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Garant__Id_cl__4CA06362" Association="Self.FK__Tb_Garant__Id_cl__4CA06362">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Garantia" EntitySet="Tb_Garantia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Pagos__Id_sol__3493CFA7" Association="Self.FK__Tb_Pagos__Id_sol__3493CFA7">
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+            <End Role="Tb_Pagos" EntitySet="Tb_Pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Presta__Id_so__52593CB8" Association="Self.FK__Tb_Presta__Id_so__52593CB8">
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+            <End Role="Tb_Prestamo_Facil" EntitySet="Tb_Prestamo_Facil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Solici__Id_an__5070F446" Association="Self.FK__Tb_Solici__Id_an__5070F446">
+            <End Role="Tb_Analista" EntitySet="Tb_Analista" />
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Solici__Id_cl__4F7CD00D" Association="Self.FK__Tb_Solici__Id_cl__4F7CD00D">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Tarjet__Id_so__5165187F" Association="Self.FK__Tb_Tarjet__Id_so__5165187F">
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+            <End Role="Tb_Tarjeta_Credito" EntitySet="Tb_Tarjeta_Credito" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CreditosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tb_Agencia">
+          <Key>
+            <PropertyRef Name="Id_agencia" />
+          </Key>
+          <Property Name="Id_agencia" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Nom_agencia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Agen_direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK__Tb_Agenci__Id_ub__4E88ABD4" FromRole="Tb_Agencia" ToRole="Tb_Ubigeo" />
+          <NavigationProperty Name="Tb_Analista" Relationship="Self.FK__Tb_Analis__Id_ag__4D94879B" FromRole="Tb_Agencia" ToRole="Tb_Analista" />
+        </EntityType>
+        <EntityType Name="Tb_Analista">
+          <Key>
+            <PropertyRef Name="Id_analista" />
+          </Key>
+          <Property Name="Id_analista" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nom_analista" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Ape_analista" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Id_agencia" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="Fec_ingreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DNI_analista" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Email_analista" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Agencia" Relationship="Self.FK__Tb_Analis__Id_ag__4D94879B" FromRole="Tb_Analista" ToRole="Tb_Agencia" />
+          <NavigationProperty Name="Tb_Solicitud" Relationship="Self.FK__Tb_Solici__Id_an__5070F446" FromRole="Tb_Analista" ToRole="Tb_Solicitud" />
+        </EntityType>
+        <EntityType Name="Tb_Cliente">
+          <Key>
+            <PropertyRef Name="Id_cli" />
+          </Key>
+          <Property Name="Id_cli" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nom_cli" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Ape_cli" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Dni_cli" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Ruc_cli" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Fec_nacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Nivel_educacion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Estado_civil" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Est_cli" Type="Int32" />
+          <Property Name="Fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Usu_registro" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_ult_mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_ult_mod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK__Tb_Client__Id_ub__4AB81AF0" FromRole="Tb_Cliente" ToRole="Tb_Ubigeo" />
+          <NavigationProperty Name="Tb_Fuente_Ingreso" Relationship="Self.FK__Tb_Fuente__Id_cl__4BAC3F29" FromRole="Tb_Cliente" ToRole="Tb_Fuente_Ingreso" />
+          <NavigationProperty Name="Tb_Garantia" Relationship="Self.FK__Tb_Garant__Id_cl__4CA06362" FromRole="Tb_Cliente" ToRole="Tb_Garantia" />
+          <NavigationProperty Name="Tb_Solicitud" Relationship="Self.FK__Tb_Solici__Id_cl__4F7CD00D" FromRole="Tb_Cliente" ToRole="Tb_Solicitud" />
+        </EntityType>
+        <EntityType Name="Tb_Credito_Hipotecario">
+          <Key>
+            <PropertyRef Name="Id_Det_Credito_Hipotecario" />
+          </Key>
+          <Property Name="Id_Det_Credito_Hipotecario" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id_solicitud" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="Tipo_hipotecario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Valor_inmueble" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Cuota_inicial" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Plazo" Type="Int32" />
+          <Property Name="Destino_Compra" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Est_credito_hipotecario" Type="Int32" />
+          <Property Name="Fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Usu_registro" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_ult_mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_ult_mod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Solicitud" Relationship="Self.FK__Tb_Credit__Id_so__5441852A" FromRole="Tb_Credito_Hipotecario" ToRole="Tb_Solicitud" />
+        </EntityType>
+        <EntityType Name="Tb_Credito_vehicular">
+          <Key>
+            <PropertyRef Name="Id_Det_Credito_vehicular" />
+          </Key>
+          <Property Name="Id_Det_Credito_vehicular" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id_solicitud" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="Cuota_inicial" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Plazo" Type="Int32" />
+          <Property Name="Seguro" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Nom_concesionario" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Nom_Vendedor" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Dni_Vendedor" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Marca" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Modelo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Año" Type="DateTime" Precision="0" />
+          <Property Name="Est_credito_vehicular" Type="Int32" />
+          <Property Name="Fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Usu_registro" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_ult_mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_ult_mod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Solicitud" Relationship="Self.FK__Tb_Credit__Id_so__534D60F1" FromRole="Tb_Credito_vehicular" ToRole="Tb_Solicitud" />
+        </EntityType>
+        <EntityType Name="Tb_Fuente_Ingreso">
+          <Key>
+            <PropertyRef Name="Id_ingreso" />
+          </Key>
+          <Property Name="Id_ingreso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_cli" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Tipo_ingreso" Type="Int32" />
+          <Property Name="Monto_ingreso" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Fec_inicio" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tb_Cliente" Relationship="Self.FK__Tb_Fuente__Id_cl__4BAC3F29" FromRole="Tb_Fuente_Ingreso" ToRole="Tb_Cliente" />
+        </EntityType>
+        <EntityType Name="Tb_Garantia">
+          <Key>
+            <PropertyRef Name="Id_garantia" />
+          </Key>
+          <Property Name="Id_garantia" Type="Int32" Nullable="false" />
+          <Property Name="Tip_garantia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Des_garantia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Valor_garantia" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Id_cli" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Est_garantia" Type="Int32" />
+          <Property Name="Fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Usu_registro" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_ult_mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_ult_mod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Cliente" Relationship="Self.FK__Tb_Garant__Id_cl__4CA06362" FromRole="Tb_Garantia" ToRole="Tb_Cliente" />
+        </EntityType>
+        <EntityType Name="Tb_Pagos">
+          <Key>
+            <PropertyRef Name="Boleta" />
+          </Key>
+          <Property Name="Boleta" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Id_solicitud" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Monto_cancelado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Cuota_numero" Type="Int32" />
+          <Property Name="Fec_pago" Type="DateTime" Precision="3" />
+          <Property Name="Fec_cancelacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tb_Solicitud" Relationship="Self.FK__Tb_Pagos__Id_sol__3493CFA7" FromRole="Tb_Pagos" ToRole="Tb_Solicitud" />
+        </EntityType>
+        <EntityType Name="Tb_Prestamo_Facil">
+          <Key>
+            <PropertyRef Name="Id_Det_Prestamo_Facil" />
+          </Key>
+          <Property Name="Id_Det_Prestamo_Facil" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id_solicitud" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="Tipo_prestamo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_desembolso" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Plazo" Type="Int32" />
+          <NavigationProperty Name="Tb_Solicitud" Relationship="Self.FK__Tb_Presta__Id_so__52593CB8" FromRole="Tb_Prestamo_Facil" ToRole="Tb_Solicitud" />
+        </EntityType>
+        <EntityType Name="Tb_Solicitud">
+          <Key>
+            <PropertyRef Name="Id_solicitud" />
+          </Key>
+          <Property Name="Id_solicitud" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id_cli" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Id_analista" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Tipo_producto" Type="Int32" />
+          <Property Name="Fec_solicitud" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Monto_solici" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Num_cuenta" Type="String" MaxLength="14" FixedLength="true" Unicode="true" />
+          <Property Name="Est_solicitud" Type="Int32" />
+          <Property Name="Fec_aprobacion" Type="DateTime" Precision="3" />
+          <Property Name="Fec_rechazo" Type="DateTime" Precision="3" />
+          <Property Name="Motivo_rechazo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Est_desembolso" Type="Int32" />
+          <Property Name="Fec_desembolso" Type="DateTime" Precision="3" />
+          <Property Name="Fec_pago" Type="DateTime" Precision="3" />
+          <Property Name="Fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Usu_registro" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_ult_mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_ult_mod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Cuotas" Type="Int32" />
+          <NavigationProperty Name="Tb_Analista" Relationship="Self.FK__Tb_Solici__Id_an__5070F446" FromRole="Tb_Solicitud" ToRole="Tb_Analista" />
+          <NavigationProperty Name="Tb_Cliente" Relationship="Self.FK__Tb_Solici__Id_cl__4F7CD00D" FromRole="Tb_Solicitud" ToRole="Tb_Cliente" />
+          <NavigationProperty Name="Tb_Credito_Hipotecario" Relationship="Self.FK__Tb_Credit__Id_so__5441852A" FromRole="Tb_Solicitud" ToRole="Tb_Credito_Hipotecario" />
+          <NavigationProperty Name="Tb_Credito_vehicular" Relationship="Self.FK__Tb_Credit__Id_so__534D60F1" FromRole="Tb_Solicitud" ToRole="Tb_Credito_vehicular" />
+          <NavigationProperty Name="Tb_Pagos" Relationship="Self.FK__Tb_Pagos__Id_sol__3493CFA7" FromRole="Tb_Solicitud" ToRole="Tb_Pagos" />
+          <NavigationProperty Name="Tb_Prestamo_Facil" Relationship="Self.FK__Tb_Presta__Id_so__52593CB8" FromRole="Tb_Solicitud" ToRole="Tb_Prestamo_Facil" />
+          <NavigationProperty Name="Tb_Tarjeta_Credito" Relationship="Self.FK__Tb_Tarjet__Id_so__5165187F" FromRole="Tb_Solicitud" ToRole="Tb_Tarjeta_Credito" />
+        </EntityType>
+        <EntityType Name="Tb_Tarjeta_Credito">
+          <Key>
+            <PropertyRef Name="Id_Det_Tarjeta_Credito" />
+          </Key>
+          <Property Name="Id_Det_Tarjeta_Credito" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id_solicitud" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="Marca" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Moneda" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Dispone_efectivo" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Tb_Solicitud" Relationship="Self.FK__Tb_Tarjet__Id_so__5165187F" FromRole="Tb_Tarjeta_Credito" ToRole="Tb_Solicitud" />
+        </EntityType>
+        <EntityType Name="Tb_Ubigeo">
+          <Key>
+            <PropertyRef Name="Id_ubigeo" />
+          </Key>
+          <Property Name="Id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdDepa" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="IdProv" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="IdDist" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Agencia" Relationship="Self.FK__Tb_Agenci__Id_ub__4E88ABD4" FromRole="Tb_Ubigeo" ToRole="Tb_Agencia" />
+          <NavigationProperty Name="Tb_Cliente" Relationship="Self.FK__Tb_Client__Id_ub__4AB81AF0" FromRole="Tb_Ubigeo" ToRole="Tb_Cliente" />
+        </EntityType>
+        <EntityType Name="tb_Usuario">
+          <Key>
+            <PropertyRef Name="Login_Usuario" />
+          </Key>
+          <Property Name="Login_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass_Usuario" Type="Binary" MaxLength="8000" FixedLength="false" Nullable="false" />
+          <Property Name="Niv_Usuario" Type="Int32" />
+          <Property Name="Est_Usuario" Type="Int32" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_Detalle_Agencia">
+          <Key>
+            <PropertyRef Name="Id_agencia" />
+          </Key>
+          <Property Name="Id_agencia" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nom_agencia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Agen_direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_Detalle_Cliente">
+          <Key>
+            <PropertyRef Name="Id_cli" />
+          </Key>
+          <Property Name="Id_cli" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nom_cli" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Ape_cli" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Dni_cli" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Ruc_cli" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Fec_nacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Edad" Type="Int32" />
+          <Property Name="Nivel_educacion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EstadoCivil" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Estado_civil" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado_cliente" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Est_cli" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_Detalle_Garantia">
+          <Key>
+            <PropertyRef Name="Id_garantia" />
+          </Key>
+          <Property Name="Id_garantia" Type="Int32" Nullable="false" />
+          <Property Name="Nom_cli" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Ape_cli" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Id_cli" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Tip_garantia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Des_garantia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Valor_garantia" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Estado_garantia" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Est_garantia" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_Detalle_Solicitud">
+          <Key>
+            <PropertyRef Name="Id_solicitud" />
+            <PropertyRef Name="Fec_solicitud" />
+          </Key>
+          <Property Name="Id_solicitud" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id_cli" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre_cliente" Type="String" MaxLength="51" FixedLength="false" Unicode="true" />
+          <Property Name="Nom_cli" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Ape_cli" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Id_analista" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre_analista" Type="String" MaxLength="51" FixedLength="false" Unicode="true" />
+          <Property Name="PRODUCTO" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_producto" Type="Int32" />
+          <Property Name="Fec_solicitud" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Monto_solici" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Num_cuenta" Type="String" MaxLength="14" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Est_solicitud" Type="Int32" />
+          <Property Name="Fec_aprobacion" Type="DateTime" Precision="3" />
+          <Property Name="Fec_rechazo" Type="DateTime" Precision="3" />
+          <Property Name="Motivo_rechazo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Estado_desembolso" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Cuotas" Type="Int32" />
+          <Property Name="Est_desembolso" Type="Int32" />
+          <Property Name="Fec_desembolso" Type="DateTime" Precision="3" />
+          <Property Name="Fec_pago" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vw_Ingresos_Clientes">
+          <Key>
+            <PropertyRef Name="ID_del_Cliente" />
+            <PropertyRef Name="Inicio_percepción_de_ingreso" />
+          </Key>
+          <Property Name="ID_del_Cliente" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_del_cliente" Type="String" MaxLength="51" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_de_ingresos" Type="Int32" />
+          <Property Name="Ingreso_descripción" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Ingresos" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Inicio_percepción_de_ingreso" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="vw_PagosDetalles">
+          <Key>
+            <PropertyRef Name="Boleta" />
+            <PropertyRef Name="Id_solicitud" />
+          </Key>
+          <Property Name="Boleta" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Id_solicitud" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Nombre_Completo" Type="String" MaxLength="51" FixedLength="false" Unicode="true" />
+          <Property Name="Id_cli" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Monto_cancelado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Cuota_numero" Type="Int32" />
+          <Property Name="Cuotas" Type="Int32" />
+          <Property Name="Fec_pago" Type="DateTime" Precision="3" />
+          <Property Name="Fec_cancelacion" Type="DateTime" Precision="3" />
+          <Property Name="RetrasoPago" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_SolicitudesXAgencia">
+          <Key>
+            <PropertyRef Name="Id_agencia" />
+            <PropertyRef Name="Id_solicitud" />
+            <PropertyRef Name="Fec_solicitud" />
+          </Key>
+          <Property Name="Id_agencia" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Nom_analista" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Id_solicitud" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Fec_solicitud" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nom_agencia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Agen_direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_VistaAnalista">
+          <Key>
+            <PropertyRef Name="Id_analista" />
+            <PropertyRef Name="Fec_ingreso" />
+          </Key>
+          <Property Name="Id_analista" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nom_analista" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Ape_analista" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Id_agencia" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="Nom_agencia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Agen_direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_ingreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DNI_analista" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Email_analista" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Tb_Agenci__Id_ub__4E88ABD4">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Agencia" Type="Self.Tb_Agencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Agencia">
+              <PropertyRef Name="Id_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Analis__Id_ag__4D94879B">
+          <End Role="Tb_Agencia" Type="Self.Tb_Agencia" Multiplicity="0..1" />
+          <End Role="Tb_Analista" Type="Self.Tb_Analista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Agencia">
+              <PropertyRef Name="Id_agencia" />
+            </Principal>
+            <Dependent Role="Tb_Analista">
+              <PropertyRef Name="Id_agencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Solici__Id_an__5070F446">
+          <End Role="Tb_Analista" Type="Self.Tb_Analista" Multiplicity="0..1" />
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Analista">
+              <PropertyRef Name="Id_analista" />
+            </Principal>
+            <Dependent Role="Tb_Solicitud">
+              <PropertyRef Name="Id_analista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Client__Id_ub__4AB81AF0">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Cliente">
+              <PropertyRef Name="Id_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Fuente__Id_cl__4BAC3F29">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
+          <End Role="Tb_Fuente_Ingreso" Type="Self.Tb_Fuente_Ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="Id_cli" />
+            </Principal>
+            <Dependent Role="Tb_Fuente_Ingreso">
+              <PropertyRef Name="Id_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Garant__Id_cl__4CA06362">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
+          <End Role="Tb_Garantia" Type="Self.Tb_Garantia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="Id_cli" />
+            </Principal>
+            <Dependent Role="Tb_Garantia">
+              <PropertyRef Name="Id_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Solici__Id_cl__4F7CD00D">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="Id_cli" />
+            </Principal>
+            <Dependent Role="Tb_Solicitud">
+              <PropertyRef Name="Id_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Credit__Id_so__5441852A">
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="0..1" />
+          <End Role="Tb_Credito_Hipotecario" Type="Self.Tb_Credito_Hipotecario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Solicitud">
+              <PropertyRef Name="Id_solicitud" />
+            </Principal>
+            <Dependent Role="Tb_Credito_Hipotecario">
+              <PropertyRef Name="Id_solicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Credit__Id_so__534D60F1">
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="0..1" />
+          <End Role="Tb_Credito_vehicular" Type="Self.Tb_Credito_vehicular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Solicitud">
+              <PropertyRef Name="Id_solicitud" />
+            </Principal>
+            <Dependent Role="Tb_Credito_vehicular">
+              <PropertyRef Name="Id_solicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Pagos__Id_sol__3493CFA7">
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="1" />
+          <End Role="Tb_Pagos" Type="Self.Tb_Pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Solicitud">
+              <PropertyRef Name="Id_solicitud" />
+            </Principal>
+            <Dependent Role="Tb_Pagos">
+              <PropertyRef Name="Id_solicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Presta__Id_so__52593CB8">
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="0..1" />
+          <End Role="Tb_Prestamo_Facil" Type="Self.Tb_Prestamo_Facil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Solicitud">
+              <PropertyRef Name="Id_solicitud" />
+            </Principal>
+            <Dependent Role="Tb_Prestamo_Facil">
+              <PropertyRef Name="Id_solicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Tarjet__Id_so__5165187F">
+          <End Role="Tb_Solicitud" Type="Self.Tb_Solicitud" Multiplicity="0..1" />
+          <End Role="Tb_Tarjeta_Credito" Type="Self.Tb_Tarjeta_Credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Solicitud">
+              <PropertyRef Name="Id_solicitud" />
+            </Principal>
+            <Dependent Role="Tb_Tarjeta_Credito">
+              <PropertyRef Name="Id_solicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CreditosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tb_Agencia" EntityType="Self.Tb_Agencia" />
+          <EntitySet Name="Tb_Analista" EntityType="Self.Tb_Analista" />
+          <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" />
+          <EntitySet Name="Tb_Credito_Hipotecario" EntityType="Self.Tb_Credito_Hipotecario" />
+          <EntitySet Name="Tb_Credito_vehicular" EntityType="Self.Tb_Credito_vehicular" />
+          <EntitySet Name="Tb_Fuente_Ingreso" EntityType="Self.Tb_Fuente_Ingreso" />
+          <EntitySet Name="Tb_Garantia" EntityType="Self.Tb_Garantia" />
+          <EntitySet Name="Tb_Pagos" EntityType="Self.Tb_Pagos" />
+          <EntitySet Name="Tb_Prestamo_Facil" EntityType="Self.Tb_Prestamo_Facil" />
+          <EntitySet Name="Tb_Solicitud" EntityType="Self.Tb_Solicitud" />
+          <EntitySet Name="Tb_Tarjeta_Credito" EntityType="Self.Tb_Tarjeta_Credito" />
+          <EntitySet Name="Tb_Ubigeo" EntityType="Self.Tb_Ubigeo" />
+          <EntitySet Name="tb_Usuario" EntityType="Self.tb_Usuario" />
+          <EntitySet Name="vw_Detalle_Agencia" EntityType="Self.vw_Detalle_Agencia" />
+          <EntitySet Name="vw_Detalle_Cliente" EntityType="Self.vw_Detalle_Cliente" />
+          <EntitySet Name="vw_Detalle_Garantia" EntityType="Self.vw_Detalle_Garantia" />
+          <EntitySet Name="vw_Detalle_Solicitud" EntityType="Self.vw_Detalle_Solicitud" />
+          <EntitySet Name="vw_Ingresos_Clientes" EntityType="Self.vw_Ingresos_Clientes" />
+          <EntitySet Name="vw_PagosDetalles" EntityType="Self.vw_PagosDetalles" />
+          <EntitySet Name="vw_SolicitudesXAgencia" EntityType="Self.vw_SolicitudesXAgencia" />
+          <EntitySet Name="vw_VistaAnalista" EntityType="Self.vw_VistaAnalista" />
+          <AssociationSet Name="FK__Tb_Agenci__Id_ub__4E88ABD4" Association="Self.FK__Tb_Agenci__Id_ub__4E88ABD4">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Agencia" EntitySet="Tb_Agencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Analis__Id_ag__4D94879B" Association="Self.FK__Tb_Analis__Id_ag__4D94879B">
+            <End Role="Tb_Agencia" EntitySet="Tb_Agencia" />
+            <End Role="Tb_Analista" EntitySet="Tb_Analista" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Solici__Id_an__5070F446" Association="Self.FK__Tb_Solici__Id_an__5070F446">
+            <End Role="Tb_Analista" EntitySet="Tb_Analista" />
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Client__Id_ub__4AB81AF0" Association="Self.FK__Tb_Client__Id_ub__4AB81AF0">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Fuente__Id_cl__4BAC3F29" Association="Self.FK__Tb_Fuente__Id_cl__4BAC3F29">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Fuente_Ingreso" EntitySet="Tb_Fuente_Ingreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Garant__Id_cl__4CA06362" Association="Self.FK__Tb_Garant__Id_cl__4CA06362">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Garantia" EntitySet="Tb_Garantia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Solici__Id_cl__4F7CD00D" Association="Self.FK__Tb_Solici__Id_cl__4F7CD00D">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Credit__Id_so__5441852A" Association="Self.FK__Tb_Credit__Id_so__5441852A">
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+            <End Role="Tb_Credito_Hipotecario" EntitySet="Tb_Credito_Hipotecario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Credit__Id_so__534D60F1" Association="Self.FK__Tb_Credit__Id_so__534D60F1">
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+            <End Role="Tb_Credito_vehicular" EntitySet="Tb_Credito_vehicular" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Pagos__Id_sol__3493CFA7" Association="Self.FK__Tb_Pagos__Id_sol__3493CFA7">
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+            <End Role="Tb_Pagos" EntitySet="Tb_Pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Presta__Id_so__52593CB8" Association="Self.FK__Tb_Presta__Id_so__52593CB8">
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+            <End Role="Tb_Prestamo_Facil" EntitySet="Tb_Prestamo_Facil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Tarjet__Id_so__5165187F" Association="Self.FK__Tb_Tarjet__Id_so__5165187F">
+            <End Role="Tb_Solicitud" EntitySet="Tb_Solicitud" />
+            <End Role="Tb_Tarjeta_Credito" EntitySet="Tb_Tarjeta_Credito" />
+          </AssociationSet>
+          <FunctionImport Name="usp_ActualizarCliente">
+            <Parameter Name="vcod" Mode="In" Type="String" />
+            <Parameter Name="vnomb" Mode="In" Type="String" />
+            <Parameter Name="vApelli" Mode="In" Type="String" />
+            <Parameter Name="vdniCli" Mode="In" Type="String" />
+            <Parameter Name="vruc" Mode="In" Type="String" />
+            <Parameter Name="vsexo" Mode="In" Type="String" />
+            <Parameter Name="vfecNac" Mode="In" Type="DateTime" />
+            <Parameter Name="vEduc" Mode="In" Type="String" />
+            <Parameter Name="vEst_Civil" Mode="In" Type="Int32" />
+            <Parameter Name="vEmail" Mode="In" Type="String" />
+            <Parameter Name="vIdubi" Mode="In" Type="String" />
+            <Parameter Name="vEst_Cli" Mode="In" Type="Int32" />
+            <Parameter Name="vUsu_Ult_Mod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarGarantia">
+            <Parameter Name="id_garantia" Mode="In" Type="Int32" />
+            <Parameter Name="tip_garantia" Mode="In" Type="String" />
+            <Parameter Name="des_garantia" Mode="In" Type="String" />
+            <Parameter Name="valor_garantia" Mode="In" Type="Decimal" />
+            <Parameter Name="id_cli" Mode="In" Type="String" />
+            <Parameter Name="est_garania" Mode="In" Type="Int32" />
+            <Parameter Name="usu_ult_mod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarCliente" ReturnType="Collection(CreditosModel.usp_ConsultarCliente_Result)">
+          <Parameter Name="vcos" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarGarantia" ReturnType="Collection(CreditosModel.usp_ConsultarGarantia_Result)">
+          <Parameter Name="id_garantia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarCliente">
+          <Parameter Name="vcod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarGarantia">
+          <Parameter Name="id_garantia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarCliente">
+            <Parameter Name="vnomb" Mode="In" Type="String" />
+            <Parameter Name="vApelli" Mode="In" Type="String" />
+            <Parameter Name="vdniCli" Mode="In" Type="String" />
+            <Parameter Name="vruc" Mode="In" Type="String" />
+            <Parameter Name="vsexo" Mode="In" Type="String" />
+            <Parameter Name="vfecNac" Mode="In" Type="DateTime" />
+            <Parameter Name="vEduc" Mode="In" Type="String" />
+            <Parameter Name="vEst_Civil" Mode="In" Type="Int32" />
+            <Parameter Name="vEmail" Mode="In" Type="String" />
+            <Parameter Name="vIdubi" Mode="In" Type="String" />
+            <Parameter Name="vEst_Cli" Mode="In" Type="Int32" />
+            <Parameter Name="vUsu_Registro" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarGarantia">
+            <Parameter Name="Tip_garantia" Mode="In" Type="String" />
+            <Parameter Name="Des_garantia" Mode="In" Type="String" />
+            <Parameter Name="Valor_garantia" Mode="In" Type="Decimal" />
+            <Parameter Name="Id_cli" Mode="In" Type="String" />
+            <Parameter Name="Est_garantia" Mode="In" Type="Int32" />
+            <Parameter Name="Usu_registro" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarCliente" ReturnType="Collection(CreditosModel.usp_ListarCliente_Result)" />
+          <FunctionImport Name="usp_ListarGarantia" ReturnType="Collection(CreditosModel.usp_ListarGarantia_Result)" />
+          <FunctionImport Name="usp_ListarGarantiaXcliente" ReturnType="Collection(CreditosModel.usp_ListarGarantiaXcliente_Result)">
+          <Parameter Name="vId_cliente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarSolicitudXAna" ReturnType="Collection(CreditosModel.usp_ListarSolicitudXAna_Result)">
+          <Parameter Name="vId_analista" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarSolicitudXcliente" ReturnType="Collection(CreditosModel.usp_ListarSolicitudXcliente_Result)">
+          <Parameter Name="vId_cliente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_RankingAnalistas" ReturnType="Collection(CreditosModel.usp_RankingAnalistas_Result)">
+            <Parameter Name="vTop" Mode="In" Type="Int32" />
+            <Parameter Name="vEst_soli" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarSolicitudEstado" ReturnType="Collection(CreditosModel.usp_ListarSolicitudEstado_Result)">
+          <Parameter Name="vEstado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Ubigeo_Departamentos" ReturnType="Collection(CreditosModel.usp_Ubigeo_Departamentos_Result)" />
+          <FunctionImport Name="usp_Ubigeo_DistritosProvinciaDepartamento" ReturnType="Collection(CreditosModel.usp_Ubigeo_DistritosProvinciaDepartamento_Result)">
+            <Parameter Name="IdDepartamento" Mode="In" Type="String" />
+            <Parameter Name="IdProvincia" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Ubigeo_ProvinciasDepartamento" ReturnType="Collection(CreditosModel.usp_Ubigeo_ProvinciasDepartamento_Result)">
+          <Parameter Name="IdDepartamento" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarPagoSolicitud" ReturnType="Collection(CreditosModel.usp_ListarPagoSolicitud_Result)">
+            <Parameter Name="vId_solicitud" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="usp_ConsultarCliente_Result">
+          <Property Type="String" Name="Id_cli" Nullable="false" MaxLength="7" />
+          <Property Type="String" Name="Nom_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Ape_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Dni_cli" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Ruc_cli" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Sexo" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="Fec_nacimiento" Nullable="true" />
+          <Property Type="Int32" Name="Edad" Nullable="true" />
+          <Property Type="String" Name="Nivel_educacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="EstadoCivil" Nullable="true" MaxLength="12" />
+          <Property Type="Int32" Name="Estado_civil" Nullable="true" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Id_ubigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Estado_cliente" Nullable="true" MaxLength="9" />
+          <Property Type="Int32" Name="Est_cli" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarGarantia_Result">
+          <Property Type="Int32" Name="Id_garantia" Nullable="false" />
+          <Property Type="String" Name="Nom_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Ape_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Id_cli" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Tip_garantia" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Des_garantia" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Valor_garantia" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Est_garantia" Nullable="true" />
+          <Property Type="String" Name="Estado_garantia" Nullable="true" MaxLength="9" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarCliente_Result">
+          <Property Type="String" Name="Id_cli" Nullable="false" MaxLength="7" />
+          <Property Type="String" Name="Nom_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="ApellNombres" Nullable="true" MaxLength="52" />
+          <Property Type="String" Name="Ape_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Dni_cli" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Ruc_cli" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Sexo" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="Fec_nacimiento" Nullable="true" />
+          <Property Type="Int32" Name="Edad" Nullable="true" />
+          <Property Type="String" Name="Nivel_educacion" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Estado_civil" Nullable="true" />
+          <Property Type="String" Name="EstadoCivil" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Id_ubigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Est_cli" Nullable="true" />
+          <Property Type="String" Name="Estado_cliente" Nullable="true" MaxLength="9" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarGarantia_Result">
+          <Property Type="Int32" Name="Id_garantia" Nullable="false" />
+          <Property Type="String" Name="Nom_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Ape_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Id_cli" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Tip_garantia" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Des_garantia" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Valor_garantia" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Est_garantia" Nullable="true" />
+          <Property Type="String" Name="Estado_garantia" Nullable="true" MaxLength="9" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarGarantiaXcliente_Result">
+          <Property Type="Int32" Name="Id_garantia" Nullable="false" />
+          <Property Type="String" Name="Nom_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Ape_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Id_cli" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Tip_garantia" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Des_garantia" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Valor_garantia" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Estado_garantia" Nullable="true" MaxLength="9" />
+          <Property Type="Int32" Name="Est_garantia" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarSolicitudXAna_Result">
+          <Property Type="String" Name="Id_solicitud" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Id_cli" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Nombre_cliente" Nullable="true" MaxLength="51" />
+          <Property Type="String" Name="Nom_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Ape_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Id_analista" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Nombre_analista" Nullable="true" MaxLength="51" />
+          <Property Type="String" Name="PRODUCTO" Nullable="true" MaxLength="19" />
+          <Property Type="Int32" Name="Tipo_producto" Nullable="true" />
+          <Property Type="DateTime" Name="Fec_solicitud" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Monto_solici" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Num_cuenta" Nullable="true" MaxLength="14" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Est_solicitud" Nullable="true" />
+          <Property Type="DateTime" Name="Fec_aprobacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Fec_rechazo" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Motivo_rechazo" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="Estado_desembolso" Nullable="true" MaxLength="13" />
+          <Property Type="Int32" Name="Est_desembolso" Nullable="true" />
+          <Property Type="DateTime" Name="Fec_desembolso" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Fec_pago" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Cuotas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarSolicitudXcliente_Result">
+          <Property Type="String" Name="Id_solicitud" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Id_cli" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Nombre_cliente" Nullable="true" MaxLength="51" />
+          <Property Type="String" Name="Nom_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Ape_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Id_analista" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Nombre_analista" Nullable="true" MaxLength="51" />
+          <Property Type="String" Name="PRODUCTO" Nullable="true" MaxLength="19" />
+          <Property Type="Int32" Name="Tipo_producto" Nullable="true" />
+          <Property Type="DateTime" Name="Fec_solicitud" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Monto_solici" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Num_cuenta" Nullable="true" MaxLength="14" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Est_solicitud" Nullable="true" />
+          <Property Type="DateTime" Name="Fec_aprobacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Fec_rechazo" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Motivo_rechazo" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="Estado_desembolso" Nullable="true" MaxLength="13" />
+          <Property Type="Int32" Name="Est_desembolso" Nullable="true" />
+          <Property Type="DateTime" Name="Fec_desembolso" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Fec_pago" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Cuotas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_RankingAnalistas_Result">
+          <Property Type="String" Name="Id_analista" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Nombre_analista" Nullable="true" MaxLength="51" />
+          <Property Type="Decimal" Name="net_value" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="NumeroSolicitudes" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarSolicitudEstado_Result">
+          <Property Type="String" Name="Id_solicitud" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Id_cli" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Nombre_cliente" Nullable="true" MaxLength="51" />
+          <Property Type="String" Name="Nom_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Ape_cli" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Id_analista" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Nombre_analista" Nullable="true" MaxLength="51" />
+          <Property Type="String" Name="PRODUCTO" Nullable="true" MaxLength="19" />
+          <Property Type="Int32" Name="Tipo_producto" Nullable="true" />
+          <Property Type="DateTime" Name="Fec_solicitud" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Monto_solici" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Num_cuenta" Nullable="true" MaxLength="14" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Est_solicitud" Nullable="true" />
+          <Property Type="DateTime" Name="Fec_aprobacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Fec_rechazo" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Motivo_rechazo" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="Estado_desembolso" Nullable="true" MaxLength="13" />
+          <Property Type="Int32" Name="Est_desembolso" Nullable="true" />
+          <Property Type="DateTime" Name="Fec_desembolso" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Fec_pago" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Cuotas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_Ubigeo_Departamentos_Result">
+          <Property Type="String" Name="IDDEPA" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="DEPARTAMENTO" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_Ubigeo_DistritosProvinciaDepartamento_Result">
+          <Property Type="String" Name="IDDIST" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="DISTRITO" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_Ubigeo_ProvinciasDepartamento_Result">
+          <Property Type="String" Name="IDPROV" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="PROVINCIA" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPagoSolicitud_Result">
+          <Property Type="String" Name="Boleta" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Id_solicitud" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Nombre_Completo" Nullable="true" MaxLength="51" />
+          <Property Type="String" Name="Id_cli" Nullable="true" MaxLength="7" />
+          <Property Type="Decimal" Name="Monto_cancelado" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Cuota_numero" Nullable="true" />
+          <Property Type="Int32" Name="Cuotas" Nullable="true" />
+          <Property Type="DateTime" Name="Fec_pago" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Fec_cancelacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="RetrasoPago" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CreditosModelStoreContainer" CdmEntityContainer="CreditosEntities">
+          <EntitySetMapping Name="Tb_Agencia">
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Agencia">
+              <MappingFragment StoreEntitySet="Tb_Agencia">
+                <ScalarProperty Name="Id_agencia" ColumnName="Id_agencia" />
+                <ScalarProperty Name="Id_ubigeo" ColumnName="Id_ubigeo" />
+                <ScalarProperty Name="Nom_agencia" ColumnName="Nom_agencia" />
+                <ScalarProperty Name="Agen_direccion" ColumnName="Agen_direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Analista">
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Analista">
+              <MappingFragment StoreEntitySet="Tb_Analista">
+                <ScalarProperty Name="Id_analista" ColumnName="Id_analista" />
+                <ScalarProperty Name="Nom_analista" ColumnName="Nom_analista" />
+                <ScalarProperty Name="Ape_analista" ColumnName="Ape_analista" />
+                <ScalarProperty Name="Id_agencia" ColumnName="Id_agencia" />
+                <ScalarProperty Name="Fec_ingreso" ColumnName="Fec_ingreso" />
+                <ScalarProperty Name="DNI_analista" ColumnName="DNI_analista" />
+                <ScalarProperty Name="Email_analista" ColumnName="Email_analista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Cliente">
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Cliente">
+              <MappingFragment StoreEntitySet="Tb_Cliente">
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="Dni_cli" ColumnName="Dni_cli" />
+                <ScalarProperty Name="Ruc_cli" ColumnName="Ruc_cli" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Fec_nacimiento" ColumnName="Fec_nacimiento" />
+                <ScalarProperty Name="Nivel_educacion" ColumnName="Nivel_educacion" />
+                <ScalarProperty Name="Estado_civil" ColumnName="Estado_civil" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id_ubigeo" ColumnName="Id_ubigeo" />
+                <ScalarProperty Name="Est_cli" ColumnName="Est_cli" />
+                <ScalarProperty Name="Fec_reg" ColumnName="Fec_reg" />
+                <ScalarProperty Name="Usu_registro" ColumnName="Usu_registro" />
+                <ScalarProperty Name="Fec_ult_mod" ColumnName="Fec_ult_mod" />
+                <ScalarProperty Name="Usu_ult_mod" ColumnName="Usu_ult_mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Cliente">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="CreditosModel.Store.usp_InsertarCliente" >
+                  <ScalarProperty Name="Usu_registro" ParameterName="vUsu_Registro" />
+                  <ScalarProperty Name="Est_cli" ParameterName="vEst_Cli" />
+                  <ScalarProperty Name="Id_ubigeo" ParameterName="vIdubi" />
+                  <ScalarProperty Name="Email" ParameterName="vEmail" />
+                  <ScalarProperty Name="Estado_civil" ParameterName="vEst_Civil" />
+                  <ScalarProperty Name="Nivel_educacion" ParameterName="vEduc" />
+                  <ScalarProperty Name="Fec_nacimiento" ParameterName="vfecNac" />
+                  <ScalarProperty Name="Sexo" ParameterName="vsexo" />
+                  <ScalarProperty Name="Ruc_cli" ParameterName="vruc" />
+                  <ScalarProperty Name="Dni_cli" ParameterName="vdniCli" />
+                  <ScalarProperty Name="Ape_cli" ParameterName="vApelli" />
+                  <ScalarProperty Name="Nom_cli" ParameterName="vnomb" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="CreditosModel.Store.usp_ActualizarCliente" >
+                  <ScalarProperty Name="Usu_ult_mod" ParameterName="vUsu_Ult_Mod" Version="Current" />
+                  <ScalarProperty Name="Est_cli" ParameterName="vEst_Cli" Version="Current" />
+                  <ScalarProperty Name="Id_ubigeo" ParameterName="vIdubi" Version="Current" />
+                  <ScalarProperty Name="Email" ParameterName="vEmail" Version="Current" />
+                  <ScalarProperty Name="Estado_civil" ParameterName="vEst_Civil" Version="Current" />
+                  <ScalarProperty Name="Nivel_educacion" ParameterName="vEduc" Version="Current" />
+                  <ScalarProperty Name="Fec_nacimiento" ParameterName="vfecNac" Version="Current" />
+                  <ScalarProperty Name="Sexo" ParameterName="vsexo" Version="Current" />
+                  <ScalarProperty Name="Ruc_cli" ParameterName="vruc" Version="Current" />
+                  <ScalarProperty Name="Dni_cli" ParameterName="vdniCli" Version="Current" />
+                  <ScalarProperty Name="Ape_cli" ParameterName="vApelli" Version="Current" />
+                  <ScalarProperty Name="Nom_cli" ParameterName="vnomb" Version="Current" />
+                  <ScalarProperty Name="Id_cli" ParameterName="vcod" Version="Original" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="CreditosModel.Store.usp_EliminarCliente" >
+                  <ScalarProperty Name="Id_cli" ParameterName="vcod" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Credito_Hipotecario">
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Credito_Hipotecario">
+              <MappingFragment StoreEntitySet="Tb_Credito_Hipotecario">
+                <ScalarProperty Name="Id_Det_Credito_Hipotecario" ColumnName="Id_Det_Credito_Hipotecario" />
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Tipo_hipotecario" ColumnName="Tipo_hipotecario" />
+                <ScalarProperty Name="Valor_inmueble" ColumnName="Valor_inmueble" />
+                <ScalarProperty Name="Cuota_inicial" ColumnName="Cuota_inicial" />
+                <ScalarProperty Name="Plazo" ColumnName="Plazo" />
+                <ScalarProperty Name="Destino_Compra" ColumnName="Destino_Compra" />
+                <ScalarProperty Name="Est_credito_hipotecario" ColumnName="Est_credito_hipotecario" />
+                <ScalarProperty Name="Fec_reg" ColumnName="Fec_reg" />
+                <ScalarProperty Name="Usu_registro" ColumnName="Usu_registro" />
+                <ScalarProperty Name="Fec_ult_mod" ColumnName="Fec_ult_mod" />
+                <ScalarProperty Name="Usu_ult_mod" ColumnName="Usu_ult_mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Credito_vehicular">
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Credito_vehicular">
+              <MappingFragment StoreEntitySet="Tb_Credito_vehicular">
+                <ScalarProperty Name="Id_Det_Credito_vehicular" ColumnName="Id_Det_Credito_vehicular" />
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Cuota_inicial" ColumnName="Cuota_inicial" />
+                <ScalarProperty Name="Plazo" ColumnName="Plazo" />
+                <ScalarProperty Name="Seguro" ColumnName="Seguro" />
+                <ScalarProperty Name="Nom_concesionario" ColumnName="Nom_concesionario" />
+                <ScalarProperty Name="Nom_Vendedor" ColumnName="Nom_Vendedor" />
+                <ScalarProperty Name="Dni_Vendedor" ColumnName="Dni_Vendedor" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="Est_credito_vehicular" ColumnName="Est_credito_vehicular" />
+                <ScalarProperty Name="Fec_reg" ColumnName="Fec_reg" />
+                <ScalarProperty Name="Usu_registro" ColumnName="Usu_registro" />
+                <ScalarProperty Name="Fec_ult_mod" ColumnName="Fec_ult_mod" />
+                <ScalarProperty Name="Usu_ult_mod" ColumnName="Usu_ult_mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Fuente_Ingreso">
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Fuente_Ingreso">
+              <MappingFragment StoreEntitySet="Tb_Fuente_Ingreso">
+                <ScalarProperty Name="Id_ingreso" ColumnName="Id_ingreso" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Tipo_ingreso" ColumnName="Tipo_ingreso" />
+                <ScalarProperty Name="Monto_ingreso" ColumnName="Monto_ingreso" />
+                <ScalarProperty Name="Fec_inicio" ColumnName="Fec_inicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Garantia">
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Garantia">
+              <MappingFragment StoreEntitySet="Tb_Garantia">
+                <ScalarProperty Name="Id_garantia" ColumnName="Id_garantia" />
+                <ScalarProperty Name="Tip_garantia" ColumnName="Tip_garantia" />
+                <ScalarProperty Name="Des_garantia" ColumnName="Des_garantia" />
+                <ScalarProperty Name="Valor_garantia" ColumnName="Valor_garantia" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Est_garantia" ColumnName="Est_garantia" />
+                <ScalarProperty Name="Fec_reg" ColumnName="Fec_reg" />
+                <ScalarProperty Name="Usu_registro" ColumnName="Usu_registro" />
+                <ScalarProperty Name="Fec_ult_mod" ColumnName="Fec_ult_mod" />
+                <ScalarProperty Name="Usu_ult_mod" ColumnName="Usu_ult_mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Garantia">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="CreditosModel.Store.usp_InsertarGarantia">
+                  <ScalarProperty Name="Usu_registro" ParameterName="Usu_registro" />
+                  <ScalarProperty Name="Est_garantia" ParameterName="Est_garantia" />
+                  <ScalarProperty Name="Id_cli" ParameterName="Id_cli" />
+                  <ScalarProperty Name="Valor_garantia" ParameterName="Valor_garantia" />
+                  <ScalarProperty Name="Des_garantia" ParameterName="Des_garantia" />
+                  <ScalarProperty Name="Tip_garantia" ParameterName="Tip_garantia" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="CreditosModel.Store.usp_ActualizarGarantia" >
+                  <ScalarProperty Name="Usu_ult_mod" ParameterName="usu_ult_mod" Version="Current" />
+                  <ScalarProperty Name="Est_garantia" ParameterName="est_garania" Version="Current" />
+                  <ScalarProperty Name="Id_cli" ParameterName="id_cli" Version="Current" />
+                  <ScalarProperty Name="Valor_garantia" ParameterName="valor_garantia" Version="Current" />
+                  <ScalarProperty Name="Des_garantia" ParameterName="des_garantia" Version="Current" />
+                  <ScalarProperty Name="Tip_garantia" ParameterName="tip_garantia" Version="Current" />
+                  <ScalarProperty Name="Id_garantia" ParameterName="id_garantia" Version="Original" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="CreditosModel.Store.usp_EliminarGarantia" >
+                  <ScalarProperty Name="Id_garantia" ParameterName="id_garantia" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Pagos">
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Pagos">
+              <MappingFragment StoreEntitySet="Tb_Pagos">
+                <ScalarProperty Name="Boleta" ColumnName="Boleta" />
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Monto_cancelado" ColumnName="Monto_cancelado" />
+                <ScalarProperty Name="Cuota_numero" ColumnName="Cuota_numero" />
+                <ScalarProperty Name="Fec_pago" ColumnName="Fec_pago" />
+                <ScalarProperty Name="Fec_cancelacion" ColumnName="Fec_cancelacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Prestamo_Facil">
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Prestamo_Facil">
+              <MappingFragment StoreEntitySet="Tb_Prestamo_Facil">
+                <ScalarProperty Name="Id_Det_Prestamo_Facil" ColumnName="Id_Det_Prestamo_Facil" />
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Tipo_prestamo" ColumnName="Tipo_prestamo" />
+                <ScalarProperty Name="Tipo_desembolso" ColumnName="Tipo_desembolso" />
+                <ScalarProperty Name="Plazo" ColumnName="Plazo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Solicitud">
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Solicitud">
+              <MappingFragment StoreEntitySet="Tb_Solicitud">
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Id_analista" ColumnName="Id_analista" />
+                <ScalarProperty Name="Tipo_producto" ColumnName="Tipo_producto" />
+                <ScalarProperty Name="Fec_solicitud" ColumnName="Fec_solicitud" />
+                <ScalarProperty Name="Monto_solici" ColumnName="Monto_solici" />
+                <ScalarProperty Name="Num_cuenta" ColumnName="Num_cuenta" />
+                <ScalarProperty Name="Est_solicitud" ColumnName="Est_solicitud" />
+                <ScalarProperty Name="Fec_aprobacion" ColumnName="Fec_aprobacion" />
+                <ScalarProperty Name="Fec_rechazo" ColumnName="Fec_rechazo" />
+                <ScalarProperty Name="Motivo_rechazo" ColumnName="Motivo_rechazo" />
+                <ScalarProperty Name="Est_desembolso" ColumnName="Est_desembolso" />
+                <ScalarProperty Name="Fec_desembolso" ColumnName="Fec_desembolso" />
+                <ScalarProperty Name="Fec_pago" ColumnName="Fec_pago" />
+                <ScalarProperty Name="Fec_reg" ColumnName="Fec_reg" />
+                <ScalarProperty Name="Usu_registro" ColumnName="Usu_registro" />
+                <ScalarProperty Name="Fec_ult_mod" ColumnName="Fec_ult_mod" />
+                <ScalarProperty Name="Usu_ult_mod" ColumnName="Usu_ult_mod" />
+                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Tarjeta_Credito">
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Tarjeta_Credito">
+              <MappingFragment StoreEntitySet="Tb_Tarjeta_Credito">
+                <ScalarProperty Name="Id_Det_Tarjeta_Credito" ColumnName="Id_Det_Tarjeta_Credito" />
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+                <ScalarProperty Name="Dispone_efectivo" ColumnName="Dispone_efectivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Ubigeo">
+            <EntityTypeMapping TypeName="CreditosModel.Tb_Ubigeo">
+              <MappingFragment StoreEntitySet="Tb_Ubigeo">
+                <ScalarProperty Name="Id_ubigeo" ColumnName="Id_ubigeo" />
+                <ScalarProperty Name="IdDepa" ColumnName="IdDepa" />
+                <ScalarProperty Name="IdProv" ColumnName="IdProv" />
+                <ScalarProperty Name="IdDist" ColumnName="IdDist" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Usuario">
+            <EntityTypeMapping TypeName="CreditosModel.tb_Usuario">
+              <MappingFragment StoreEntitySet="tb_Usuario">
+                <ScalarProperty Name="Login_Usuario" ColumnName="Login_Usuario" />
+                <ScalarProperty Name="Pass_Usuario" ColumnName="Pass_Usuario" />
+                <ScalarProperty Name="Niv_Usuario" ColumnName="Niv_Usuario" />
+                <ScalarProperty Name="Est_Usuario" ColumnName="Est_Usuario" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Detalle_Agencia">
+            <EntityTypeMapping TypeName="CreditosModel.vw_Detalle_Agencia">
+              <MappingFragment StoreEntitySet="vw_Detalle_Agencia">
+                <ScalarProperty Name="Id_agencia" ColumnName="Id_agencia" />
+                <ScalarProperty Name="Id_ubigeo" ColumnName="Id_ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Nom_agencia" ColumnName="Nom_agencia" />
+                <ScalarProperty Name="Agen_direccion" ColumnName="Agen_direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Detalle_Cliente">
+            <EntityTypeMapping TypeName="CreditosModel.vw_Detalle_Cliente">
+              <MappingFragment StoreEntitySet="vw_Detalle_Cliente">
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="Dni_cli" ColumnName="Dni_cli" />
+                <ScalarProperty Name="Ruc_cli" ColumnName="Ruc_cli" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Fec_nacimiento" ColumnName="Fec_nacimiento" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Nivel_educacion" ColumnName="Nivel_educacion" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="Estado_civil" ColumnName="Estado_civil" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id_ubigeo" ColumnName="Id_ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Estado_cliente" ColumnName="Estado cliente" />
+                <ScalarProperty Name="Est_cli" ColumnName="Est_cli" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Detalle_Garantia">
+            <EntityTypeMapping TypeName="CreditosModel.vw_Detalle_Garantia">
+              <MappingFragment StoreEntitySet="vw_Detalle_Garantia">
+                <ScalarProperty Name="Id_garantia" ColumnName="Id_garantia" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Tip_garantia" ColumnName="Tip_garantia" />
+                <ScalarProperty Name="Des_garantia" ColumnName="Des_garantia" />
+                <ScalarProperty Name="Valor_garantia" ColumnName="Valor_garantia" />
+                <ScalarProperty Name="Estado_garantia" ColumnName="Estado garantia" />
+                <ScalarProperty Name="Est_garantia" ColumnName="Est_garantia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Detalle_Solicitud">
+            <EntityTypeMapping TypeName="CreditosModel.vw_Detalle_Solicitud">
+              <MappingFragment StoreEntitySet="vw_Detalle_Solicitud">
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Nombre_cliente" ColumnName="Nombre cliente" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="Id_analista" ColumnName="Id_analista" />
+                <ScalarProperty Name="Nombre_analista" ColumnName="Nombre analista" />
+                <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
+                <ScalarProperty Name="Tipo_producto" ColumnName="Tipo_producto" />
+                <ScalarProperty Name="Fec_solicitud" ColumnName="Fec_solicitud" />
+                <ScalarProperty Name="Monto_solici" ColumnName="Monto_solici" />
+                <ScalarProperty Name="Num_cuenta" ColumnName="Num_cuenta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Est_solicitud" ColumnName="Est_solicitud" />
+                <ScalarProperty Name="Fec_aprobacion" ColumnName="Fec_aprobacion" />
+                <ScalarProperty Name="Fec_rechazo" ColumnName="Fec_rechazo" />
+                <ScalarProperty Name="Motivo_rechazo" ColumnName="Motivo_rechazo" />
+                <ScalarProperty Name="Estado_desembolso" ColumnName="Estado desembolso" />
+                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
+                <ScalarProperty Name="Est_desembolso" ColumnName="Est_desembolso" />
+                <ScalarProperty Name="Fec_desembolso" ColumnName="Fec_desembolso" />
+                <ScalarProperty Name="Fec_pago" ColumnName="Fec_pago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Ingresos_Clientes">
+            <EntityTypeMapping TypeName="CreditosModel.vw_Ingresos_Clientes">
+              <MappingFragment StoreEntitySet="vw_Ingresos_Clientes">
+                <ScalarProperty Name="ID_del_Cliente" ColumnName="ID del Cliente" />
+                <ScalarProperty Name="Nombre_del_cliente" ColumnName="Nombre del cliente" />
+                <ScalarProperty Name="Tipo_de_ingresos" ColumnName="Tipo de ingresos" />
+                <ScalarProperty Name="Ingreso_descripción" ColumnName="Ingreso descripción" />
+                <ScalarProperty Name="Ingresos" ColumnName="Ingresos" />
+                <ScalarProperty Name="Inicio_percepción_de_ingreso" ColumnName="Inicio percepción de ingreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_PagosDetalles">
+            <EntityTypeMapping TypeName="CreditosModel.vw_PagosDetalles">
+              <MappingFragment StoreEntitySet="vw_PagosDetalles">
+                <ScalarProperty Name="Boleta" ColumnName="Boleta" />
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Monto_cancelado" ColumnName="Monto_cancelado" />
+                <ScalarProperty Name="Cuota_numero" ColumnName="Cuota_numero" />
+                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
+                <ScalarProperty Name="Fec_pago" ColumnName="Fec_pago" />
+                <ScalarProperty Name="Fec_cancelacion" ColumnName="Fec_cancelacion" />
+                <ScalarProperty Name="RetrasoPago" ColumnName="RetrasoPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_SolicitudesXAgencia">
+            <EntityTypeMapping TypeName="CreditosModel.vw_SolicitudesXAgencia">
+              <MappingFragment StoreEntitySet="vw_SolicitudesXAgencia">
+                <ScalarProperty Name="Id_agencia" ColumnName="Id_agencia" />
+                <ScalarProperty Name="Nom_analista" ColumnName="Nom_analista" />
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Fec_solicitud" ColumnName="Fec_solicitud" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Id_ubigeo" ColumnName="Id_ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Nom_agencia" ColumnName="Nom_agencia" />
+                <ScalarProperty Name="Agen_direccion" ColumnName="Agen_direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_VistaAnalista">
+            <EntityTypeMapping TypeName="CreditosModel.vw_VistaAnalista">
+              <MappingFragment StoreEntitySet="vw_VistaAnalista">
+                <ScalarProperty Name="Id_analista" ColumnName="Id_analista" />
+                <ScalarProperty Name="Nom_analista" ColumnName="Nom_analista" />
+                <ScalarProperty Name="Ape_analista" ColumnName="Ape_analista" />
+                <ScalarProperty Name="Id_agencia" ColumnName="Id_agencia" />
+                <ScalarProperty Name="Nom_agencia" ColumnName="Nom_agencia" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Agen_direccion" ColumnName="Agen_direccion" />
+                <ScalarProperty Name="Fec_ingreso" ColumnName="Fec_ingreso" />
+                <ScalarProperty Name="DNI_analista" ColumnName="DNI_analista" />
+                <ScalarProperty Name="Email_analista" ColumnName="Email_analista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_ActualizarCliente" FunctionName="CreditosModel.Store.usp_ActualizarCliente" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarGarantia" FunctionName="CreditosModel.Store.usp_ActualizarGarantia" />
+          <FunctionImportMapping FunctionImportName="usp_ConsultarCliente" FunctionName="CreditosModel.Store.usp_ConsultarCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_ConsultarCliente_Result">
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="Dni_cli" ColumnName="Dni_cli" />
+                <ScalarProperty Name="Ruc_cli" ColumnName="Ruc_cli" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Fec_nacimiento" ColumnName="Fec_nacimiento" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Nivel_educacion" ColumnName="Nivel_educacion" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="Estado_civil" ColumnName="Estado_civil" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id_ubigeo" ColumnName="Id_ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Estado_cliente" ColumnName="Estado cliente" />
+                <ScalarProperty Name="Est_cli" ColumnName="Est_cli" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarGarantia" FunctionName="CreditosModel.Store.usp_ConsultarGarantia">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_ConsultarGarantia_Result">
+                <ScalarProperty Name="Id_garantia" ColumnName="Id_garantia" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Tip_garantia" ColumnName="Tip_garantia" />
+                <ScalarProperty Name="Des_garantia" ColumnName="Des_garantia" />
+                <ScalarProperty Name="Valor_garantia" ColumnName="Valor_garantia" />
+                <ScalarProperty Name="Est_garantia" ColumnName="Est_garantia" />
+                <ScalarProperty Name="Estado_garantia" ColumnName="Estado garantia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_EliminarCliente" FunctionName="CreditosModel.Store.usp_EliminarCliente" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarGarantia" FunctionName="CreditosModel.Store.usp_EliminarGarantia" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarCliente" FunctionName="CreditosModel.Store.usp_InsertarCliente" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarGarantia" FunctionName="CreditosModel.Store.usp_InsertarGarantia" />
+          <FunctionImportMapping FunctionImportName="usp_ListarCliente" FunctionName="CreditosModel.Store.usp_ListarCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_ListarCliente_Result">
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="ApellNombres" ColumnName="ApellNombres" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="Dni_cli" ColumnName="Dni_cli" />
+                <ScalarProperty Name="Ruc_cli" ColumnName="Ruc_cli" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Fec_nacimiento" ColumnName="Fec_nacimiento" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Nivel_educacion" ColumnName="Nivel_educacion" />
+                <ScalarProperty Name="Estado_civil" ColumnName="Estado_civil" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id_ubigeo" ColumnName="Id_ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Est_cli" ColumnName="Est_cli" />
+                <ScalarProperty Name="Estado_cliente" ColumnName="Estado cliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarGarantia" FunctionName="CreditosModel.Store.usp_ListarGarantia">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_ListarGarantia_Result">
+                <ScalarProperty Name="Id_garantia" ColumnName="Id_garantia" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Tip_garantia" ColumnName="Tip_garantia" />
+                <ScalarProperty Name="Des_garantia" ColumnName="Des_garantia" />
+                <ScalarProperty Name="Valor_garantia" ColumnName="Valor_garantia" />
+                <ScalarProperty Name="Est_garantia" ColumnName="Est_garantia" />
+                <ScalarProperty Name="Estado_garantia" ColumnName="Estado garantia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarGarantiaXcliente" FunctionName="CreditosModel.Store.usp_ListarGarantiaXcliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_ListarGarantiaXcliente_Result">
+                <ScalarProperty Name="Id_garantia" ColumnName="Id_garantia" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Tip_garantia" ColumnName="Tip_garantia" />
+                <ScalarProperty Name="Des_garantia" ColumnName="Des_garantia" />
+                <ScalarProperty Name="Valor_garantia" ColumnName="Valor_garantia" />
+                <ScalarProperty Name="Estado_garantia" ColumnName="Estado garantia" />
+                <ScalarProperty Name="Est_garantia" ColumnName="Est_garantia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarSolicitudXAna" FunctionName="CreditosModel.Store.usp_ListarSolicitudXAna">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_ListarSolicitudXAna_Result">
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Nombre_cliente" ColumnName="Nombre cliente" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="Id_analista" ColumnName="Id_analista" />
+                <ScalarProperty Name="Nombre_analista" ColumnName="Nombre analista" />
+                <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
+                <ScalarProperty Name="Tipo_producto" ColumnName="Tipo_producto" />
+                <ScalarProperty Name="Fec_solicitud" ColumnName="Fec_solicitud" />
+                <ScalarProperty Name="Monto_solici" ColumnName="Monto_solici" />
+                <ScalarProperty Name="Num_cuenta" ColumnName="Num_cuenta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Est_solicitud" ColumnName="Est_solicitud" />
+                <ScalarProperty Name="Fec_aprobacion" ColumnName="Fec_aprobacion" />
+                <ScalarProperty Name="Fec_rechazo" ColumnName="Fec_rechazo" />
+                <ScalarProperty Name="Motivo_rechazo" ColumnName="Motivo_rechazo" />
+                <ScalarProperty Name="Estado_desembolso" ColumnName="Estado desembolso" />
+                <ScalarProperty Name="Est_desembolso" ColumnName="Est_desembolso" />
+                <ScalarProperty Name="Fec_desembolso" ColumnName="Fec_desembolso" />
+                <ScalarProperty Name="Fec_pago" ColumnName="Fec_pago" />
+                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarSolicitudXcliente" FunctionName="CreditosModel.Store.usp_ListarSolicitudXcliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_ListarSolicitudXcliente_Result">
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Nombre_cliente" ColumnName="Nombre cliente" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="Id_analista" ColumnName="Id_analista" />
+                <ScalarProperty Name="Nombre_analista" ColumnName="Nombre analista" />
+                <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
+                <ScalarProperty Name="Tipo_producto" ColumnName="Tipo_producto" />
+                <ScalarProperty Name="Fec_solicitud" ColumnName="Fec_solicitud" />
+                <ScalarProperty Name="Monto_solici" ColumnName="Monto_solici" />
+                <ScalarProperty Name="Num_cuenta" ColumnName="Num_cuenta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Est_solicitud" ColumnName="Est_solicitud" />
+                <ScalarProperty Name="Fec_aprobacion" ColumnName="Fec_aprobacion" />
+                <ScalarProperty Name="Fec_rechazo" ColumnName="Fec_rechazo" />
+                <ScalarProperty Name="Motivo_rechazo" ColumnName="Motivo_rechazo" />
+                <ScalarProperty Name="Estado_desembolso" ColumnName="Estado desembolso" />
+                <ScalarProperty Name="Est_desembolso" ColumnName="Est_desembolso" />
+                <ScalarProperty Name="Fec_desembolso" ColumnName="Fec_desembolso" />
+                <ScalarProperty Name="Fec_pago" ColumnName="Fec_pago" />
+                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_RankingAnalistas" FunctionName="CreditosModel.Store.usp_RankingAnalistas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_RankingAnalistas_Result">
+                <ScalarProperty Name="Id_analista" ColumnName="Id_analista" />
+                <ScalarProperty Name="Nombre_analista" ColumnName="Nombre analista" />
+                <ScalarProperty Name="net_value" ColumnName="net_value" />
+                <ScalarProperty Name="NumeroSolicitudes" ColumnName="NumeroSolicitudes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarSolicitudEstado" FunctionName="CreditosModel.Store.usp_ListarSolicitudEstado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_ListarSolicitudEstado_Result">
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Nombre_cliente" ColumnName="Nombre cliente" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="Id_analista" ColumnName="Id_analista" />
+                <ScalarProperty Name="Nombre_analista" ColumnName="Nombre analista" />
+                <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
+                <ScalarProperty Name="Tipo_producto" ColumnName="Tipo_producto" />
+                <ScalarProperty Name="Fec_solicitud" ColumnName="Fec_solicitud" />
+                <ScalarProperty Name="Monto_solici" ColumnName="Monto_solici" />
+                <ScalarProperty Name="Num_cuenta" ColumnName="Num_cuenta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Est_solicitud" ColumnName="Est_solicitud" />
+                <ScalarProperty Name="Fec_aprobacion" ColumnName="Fec_aprobacion" />
+                <ScalarProperty Name="Fec_rechazo" ColumnName="Fec_rechazo" />
+                <ScalarProperty Name="Motivo_rechazo" ColumnName="Motivo_rechazo" />
+                <ScalarProperty Name="Estado_desembolso" ColumnName="Estado desembolso" />
+                <ScalarProperty Name="Est_desembolso" ColumnName="Est_desembolso" />
+                <ScalarProperty Name="Fec_desembolso" ColumnName="Fec_desembolso" />
+                <ScalarProperty Name="Fec_pago" ColumnName="Fec_pago" />
+                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_Departamentos" FunctionName="CreditosModel.Store.usp_Ubigeo_Departamentos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_Ubigeo_Departamentos_Result">
+                <ScalarProperty Name="IDDEPA" ColumnName="IDDEPA" />
+                <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_DistritosProvinciaDepartamento" FunctionName="CreditosModel.Store.usp_Ubigeo_DistritosProvinciaDepartamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_Ubigeo_DistritosProvinciaDepartamento_Result">
+                <ScalarProperty Name="IDDIST" ColumnName="IDDIST" />
+                <ScalarProperty Name="DISTRITO" ColumnName="DISTRITO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_ProvinciasDepartamento" FunctionName="CreditosModel.Store.usp_Ubigeo_ProvinciasDepartamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_Ubigeo_ProvinciasDepartamento_Result">
+                <ScalarProperty Name="IDPROV" ColumnName="IDPROV" />
+                <ScalarProperty Name="PROVINCIA" ColumnName="PROVINCIA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPagoSolicitud" FunctionName="CreditosModel.Store.usp_ListarPagoSolicitud">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditosModel.usp_ListarPagoSolicitud_Result">
+                <ScalarProperty Name="Boleta" ColumnName="Boleta" />
+                <ScalarProperty Name="Id_solicitud" ColumnName="Id_solicitud" />
+                <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+                <ScalarProperty Name="Id_cli" ColumnName="Id_cli" />
+                <ScalarProperty Name="Monto_cancelado" ColumnName="Monto_cancelado" />
+                <ScalarProperty Name="Cuota_numero" ColumnName="Cuota_numero" />
+                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
+                <ScalarProperty Name="Fec_pago" ColumnName="Fec_pago" />
+                <ScalarProperty Name="Fec_cancelacion" ColumnName="Fec_cancelacion" />
+                <ScalarProperty Name="RetrasoPago" ColumnName="RetrasoPago" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
