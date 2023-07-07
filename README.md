@@ -2,10 +2,15 @@
 Un Sistema que esta en .NET usando WCF tanto para entorno de escritorio como en Web , por una parte el entorno de web se realizan consultas filtradas y en el entorno de escritorio se realiza mantenimientos de solicitar un prestamo o actualizar cierto prestamo
 
 El proyecto cuenta con web y GUI
+
 ![image](https://github.com/jorgeluis1996/CreditosWCF_Entity/assets/84692577/433e7231-5864-4f8a-8913-625caa1c65e4)
+
+estructura en SQL server
+![image](https://github.com/jorgeluis1996/CreditosWCF_Entity/assets/84692577/f3641f22-cae1-4d48-93fa-75d08b3c4402)
 
 
 Parte GUI 
+![image](https://github.com/jorgeluis1996/CreditosWCF_Entity/assets/84692577/a5422781-7ed5-4cfc-8730-aaa00d3273de)
 
 menu
 ![image](https://github.com/jorgeluis1996/CreditosWCF_Entity/assets/84692577/773065fa-287a-4d12-a90d-dafc3bd9b2e3)
